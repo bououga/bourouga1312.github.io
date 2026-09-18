@@ -225,18 +225,60 @@
     const c = document.createElement('canvas');
     c.width = T.TERRAIN_W; c.height = T.TERRAIN_H;
     const g = c.getContext('2d');
-    const palette = [
-      { herbe: '#6d8348', herbe2: '#5d7540', labour: '#8a7346', bois: '#31552a', feuille: '#3d6b31' },
-      { herbe: '#77863f', herbe2: '#66793a', labour: '#9c8245', bois: '#2f5327', feuille: '#3a682d' },
-      { herbe: '#8a7c42', herbe2: '#776b39', labour: '#9a7f42', bois: '#6b4a1e', feuille: '#8a5a22' },
-      { herbe: '#9aa0a4', herbe2: '#878d92', labour: '#b7bcc0', bois: '#48544a', feuille: '#5a675a' },
+    const rng = U.makeRng(t.seed + 55);
+    const contour = 'rgba(20,22,16,0.75)';
+
+    // Palettes plates et chaudes, une par saison.
+    const pal = [
+      { sol: '#6f7d41', sol2: '#657338', sol3: '#7b8949', terre: '#755c3a', pierre: '#8d8a80',
+        feuille: '#3f6b2e', feuilleClair: '#4f7f38', tronc: '#4a3524', eau: '#3f6f86' },
+      { sol: '#7b8340', sol2: '#6e7638', sol3: '#88904c', terre: '#846741', pierre: '#918e84',
+        feuille: '#3a6529', feuilleClair: '#4b7a34', tronc: '#4a3524', eau: '#427490' },
+      { sol: '#8a7d42', sol2: '#7c703a', sol3: '#968a4e', terre: '#8a6a3e', pierre: '#8f8b80',
+        feuille: '#8a5a20', feuilleClair: '#a4712a', tronc: '#4a3524', eau: '#436a80' },
+      { sol: '#b3bcc0', sol2: '#a1abb0', sol3: '#c9d2d4', terre: '#8a8279', pierre: '#8e8c88',
+        feuille: '#3b4a3a', feuilleClair: '#d2dcda', tronc: '#3a3026', eau: '#557c92' },
     ][t.saison || 0];
 
-    g.fillStyle = palette.herbe;
+    g.fillStyle = pal.sol;
     g.fillRect(0, 0, c.width, c.height);
 
-    // Ombrage du relief calculé en basse résolution puis étiré : les pentes restent douces.
-    const ech = 6;
+    // Le sol est fait de petites dalles légèrement différentes : c'est ce qui
+    // donne sa matière au terrain sans le charger de détails.
+    const dalle = 20;
+    for (let y = 0; y < T.TERRAIN_H; y += dalle) {
+      for (let x = 0; x < T.TERRAIN_W; x += dalle) {
+        const r = rng();
+        if (r < 0.30) g.fillStyle = pal.sol2;
+        else if (r < 0.58) g.fillStyle = pal.sol3;
+        else continue;
+        g.globalAlpha = 0.08 + rng() * 0.10;
+        g.fillRect(x, y, dalle, dalle);
+      }
+    }
+    // Grain fin par-dessus les dalles : le sol cesse d'être un damier.
+    for (let y = 0; y < T.TERRAIN_H; y += 5) {
+      for (let x = 0; x < T.TERRAIN_W; x += 5) {
+        const r = rng();
+        if (r > 0.45) continue;
+        g.fillStyle = r < 0.22 ? pal.sol2 : pal.sol3;
+        g.globalAlpha = 0.10 + rng() * 0.12;
+        g.fillRect(x, y, 5, 5);
+      }
+    }
+    // Variation lente par-dessus : le pré n'est pas un damier régulier.
+    for (let i = 0; i < 26; i++) {
+      const x = rng() * T.TERRAIN_W, y = rng() * T.TERRAIN_H, r = 70 + rng() * 180;
+      const d = g.createRadialGradient(x, y, 0, x, y, r);
+      d.addColorStop(0, rng() < 0.5 ? 'rgba(255,250,210,0.06)' : 'rgba(40,50,25,0.07)');
+      d.addColorStop(1, 'rgba(0,0,0,0)');
+      g.globalAlpha = 1; g.fillStyle = d;
+      g.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+    g.globalAlpha = 1;
+
+    // Relief : ombrage doux, juste assez pour lire les pentes.
+    const ech = 8;
     const oc = document.createElement('canvas');
     oc.width = Math.ceil(T.TERRAIN_W / ech); oc.height = Math.ceil(T.TERRAIN_H / ech);
     const og = oc.getContext('2d');
@@ -245,108 +287,133 @@
       for (let i = 0; i < oc.width; i++) {
         const x = i * ech, y = j * ech;
         const h = T.altitude(t, x, y);
-        const hx = T.altitude(t, x + ech, y) - h;
-        const hy = T.altitude(t, x, y + ech) - h;
-        const pente = (hx + hy) / ech;
-        const lum = U.clamp(0.5 - pente * 1.5, 0, 1);
+        const pente = ((T.altitude(t, x + ech, y) - h) + (T.altitude(t, x, y + ech) - h)) / ech;
         const k = (j * oc.width + i) * 4;
-        const clair = lum > 0.5;
-        img.data[k] = clair ? 255 : 12;
-        img.data[k + 1] = clair ? 250 : 18;
-        img.data[k + 2] = clair ? 220 : 10;
-        img.data[k + 3] = Math.min(88, Math.abs(lum - 0.5) * 250);
+        const clair = pente < 0;
+        img.data[k] = clair ? 255 : 20;
+        img.data[k + 1] = clair ? 246 : 24;
+        img.data[k + 2] = clair ? 208 : 16;
+        img.data[k + 3] = Math.min(70, Math.abs(pente) * 190);
       }
     }
     og.putImageData(img, 0, 0);
     g.imageSmoothingEnabled = true;
     g.drawImage(oc, 0, 0, T.TERRAIN_W, T.TERRAIN_H);
 
-    // Texture d'herbe : petites touches irrégulières pour casser l'aplat.
-    const rng = U.makeRng(t.seed + 55);
-    for (let i = 0; i < 9000; i++) {
-      const x = rng() * T.TERRAIN_W, y = rng() * T.TERRAIN_H;
-      g.fillStyle = rng() < 0.5 ? palette.herbe2 : palette.herbe;
-      g.globalAlpha = 0.25 + rng() * 0.3;
-      g.fillRect(x, y, 1.6 + rng() * 2.4, 1 + rng());
-    }
-    g.globalAlpha = 1;
-
-    // Champs labourés
-    for (const ch of t.champs) {
-      g.save();
-      g.translate(ch.x, ch.y); g.rotate(ch.a);
-      g.globalAlpha = 0.34;
-      g.fillStyle = palette.labour;
-      g.fillRect(-ch.w / 2, -ch.h / 2, ch.w, ch.h);
-      g.globalAlpha = 0.25;
-      g.strokeStyle = '#3b3020'; g.lineWidth = 1;
-      for (let x = -ch.w / 2; x < ch.w / 2; x += 5) {
-        g.beginPath(); g.moveTo(x, -ch.h / 2); g.lineTo(x, ch.h / 2); g.stroke();
-      }
-      g.globalAlpha = 0.35;
-      g.strokeStyle = '#4a3f28'; g.lineWidth = 2;
-      g.strokeRect(-ch.w / 2, -ch.h / 2, ch.w, ch.h);
-      g.restore();
-    }
-    g.globalAlpha = 1;
-
-    // Rivière
-    if (t.riviere) {
-      g.lineCap = 'round'; g.lineJoin = 'round';
-      g.strokeStyle = '#4c6a4a'; g.lineWidth = t.riviere.largeur + 8;
-      traceLigne(g, t.riviere.pts); g.stroke();
-      g.strokeStyle = '#3f6a80'; g.lineWidth = t.riviere.largeur;
-      traceLigne(g, t.riviere.pts); g.stroke();
-      g.strokeStyle = 'rgba(200,228,240,0.30)'; g.lineWidth = t.riviere.largeur * 0.35;
-      traceLigne(g, t.riviere.pts); g.stroke();
-    }
-
-    // Bois : contour irrégulier plutôt qu'un disque net.
-    for (const bo of t.bosquets) {
-      g.save();
+    // Plaques de terre nue et de cailloux, aux contours irréguliers.
+    const cheminTache = (cx, cy, r) => {
       g.beginPath();
-      const n = 16;
+      const n = 13;
       for (let i = 0; i <= n; i++) {
         const a = (i / n) * Math.PI * 2;
-        const r = bo.r * (0.78 + 0.34 * Math.abs(Math.sin(a * 2.3 + bo.x)));
-        const x = bo.x + Math.cos(a) * r, y = bo.y + Math.sin(a) * r;
+        const rr = r * (0.65 + 0.45 * Math.abs(Math.sin(a * 2.7 + cx * 0.05)));
+        const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr * 0.8;
         if (i === 0) g.moveTo(x, y); else g.lineTo(x, y);
       }
       g.closePath();
-      g.fillStyle = palette.bois; g.globalAlpha = 0.9; g.fill();
+    };
+    const tache = (cx, cy, r, couleur, alpha) => {
+      g.save();
+      g.globalAlpha = alpha;
+      g.fillStyle = couleur;
+      cheminTache(cx, cy, r);
+      g.fill();
+      g.restore();
+    };
+    for (const ch of t.champs) ch.rayon = Math.max(ch.w, ch.h) * 0.45;
+    for (const ch of t.champs) tache(ch.x, ch.y, ch.rayon, pal.terre, 0.55);
+    for (let i = 0; i < 16; i++) {
+      tache(rng() * T.TERRAIN_W, rng() * T.TERRAIN_H, 20 + rng() * 45, pal.terre, 0.22);
+    }
+
+    // Sillons sur les champs, découpés au contour de la parcelle.
+    for (const ch of t.champs) {
+      g.save();
+      cheminTache(ch.x, ch.y, ch.rayon);
       g.clip();
-      g.globalAlpha = 1;
-      const nb = Math.round(bo.r * 1.6);
-      for (let i = 0; i < nb; i++) {
-        const a = rng() * Math.PI * 2, r = Math.sqrt(rng()) * bo.r;
-        const x = bo.x + Math.cos(a) * r, y = bo.y + Math.sin(a) * r;
-        const taille = 3 + rng() * 3;
-        g.fillStyle = 'rgba(0,0,0,0.28)';
-        g.beginPath(); g.arc(x + 1.8, y + 2.2, taille, 0, Math.PI * 2); g.fill();
-        g.fillStyle = palette.feuille;
-        g.beginPath(); g.arc(x, y, taille, 0, Math.PI * 2); g.fill();
+      g.translate(ch.x, ch.y); g.rotate(ch.a);
+      g.globalAlpha = 0.3;
+      g.strokeStyle = 'rgba(52,40,24,0.9)'; g.lineWidth = 1.5;
+      const demi = ch.rayon * 1.3;
+      for (let x = -demi; x < demi; x += 8) {
+        g.beginPath(); g.moveTo(x, -demi); g.lineTo(x, demi); g.stroke();
       }
       g.restore();
     }
+    g.globalAlpha = 1;
 
-    // Village
-    for (const bt of t.batiments) {
-      g.save(); g.translate(bt.x, bt.y); g.rotate(bt.a);
-      g.fillStyle = 'rgba(0,0,0,0.35)'; g.fillRect(-bt.w / 2 + 2.5, -bt.h / 2 + 3, bt.w, bt.h);
-      g.fillStyle = '#cbbb9e'; g.fillRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h);
-      g.fillStyle = '#8e4c33'; g.fillRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h * 0.5);
-      g.strokeStyle = 'rgba(50,40,30,0.6)'; g.lineWidth = 0.8;
-      g.strokeRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h);
-      g.restore();
+    // La rivière : bande plate, berge marquée, reflet clair au milieu.
+    if (t.riviere) {
+      g.lineCap = 'round'; g.lineJoin = 'round';
+      g.strokeStyle = pal.terre; g.lineWidth = t.riviere.largeur + 10;
+      traceLigne(g, t.riviere.pts); g.stroke();
+      g.strokeStyle = contour; g.lineWidth = t.riviere.largeur + 3;
+      traceLigne(g, t.riviere.pts); g.stroke();
+      g.strokeStyle = pal.eau; g.lineWidth = t.riviere.largeur;
+      traceLigne(g, t.riviere.pts); g.stroke();
+      g.strokeStyle = 'rgba(210,235,245,0.22)'; g.lineWidth = t.riviere.largeur * 0.3;
+      traceLigne(g, t.riviere.pts); g.stroke();
     }
 
-    // Assombrissement des bords : le regard reste au centre du champ.
-    const vign = g.createRadialGradient(T.TERRAIN_W / 2, T.TERRAIN_H / 2, T.TERRAIN_H * 0.35,
-      T.TERRAIN_W / 2, T.TERRAIN_H / 2, T.TERRAIN_W * 0.75);
-    vign.addColorStop(0, 'rgba(0,0,0,0)');
-    vign.addColorStop(1, 'rgba(0,0,0,0.30)');
-    g.fillStyle = vign;
-    g.fillRect(0, 0, T.TERRAIN_W, T.TERRAIN_H);
+    // Les arbres : houppier rond, cerné de noir, avec une ombre décalée.
+    const arbre = (x, y, r) => {
+      g.fillStyle = 'rgba(16,20,12,0.30)';
+      g.beginPath(); g.ellipse(x + r * 0.35, y + r * 0.45, r * 0.95, r * 0.8, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = pal.feuille;
+      g.strokeStyle = contour; g.lineWidth = 1.2;
+      g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = pal.feuilleClair;
+      g.beginPath(); g.arc(x - r * 0.28, y - r * 0.3, r * 0.55, 0, Math.PI * 2); g.fill();
+      g.fillStyle = pal.tronc;
+      g.beginPath(); g.arc(x + r * 0.05, y + r * 0.1, r * 0.17, 0, Math.PI * 2); g.fill();
+    };
+
+    for (const bo of t.bosquets) {
+      // Litière sous le bois, puis les arbres un par un.
+      tache(bo.x, bo.y, bo.r * 1.05, pal.terre, 0.30);
+      const n = Math.round(bo.r * 0.30);
+      const places = [];
+      for (let i = 0; i < n * 5 && places.length < n; i++) {
+        const a = rng() * Math.PI * 2, rr = Math.sqrt(rng()) * bo.r;
+        const x = bo.x + Math.cos(a) * rr, y = bo.y + Math.sin(a) * rr;
+        if (places.some((q) => U.dist2(q[0], q[1], x, y) < 150)) continue;
+        places.push([x, y]);
+      }
+      places.sort((a, b) => a[1] - b[1]);
+      for (const [x, y] of places) arbre(x, y, 7 + rng() * 5);
+    }
+
+    // Quelques rochers isolés.
+    for (let i = 0; i < 14; i++) {
+      const x = rng() * T.TERRAIN_W, y = rng() * T.TERRAIN_H, r = 4 + rng() * 5;
+      g.fillStyle = 'rgba(16,20,12,0.28)';
+      g.beginPath(); g.ellipse(x + r * 0.4, y + r * 0.4, r, r * 0.8, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = pal.pierre; g.strokeStyle = contour; g.lineWidth = 1.1;
+      g.beginPath();
+      for (let k = 0; k < 6; k++) {
+        const a = (k / 6) * Math.PI * 2;
+        const rr = r * (0.75 + rng() * 0.4);
+        const px = x + Math.cos(a) * rr, py = y + Math.sin(a) * rr * 0.85;
+        if (k === 0) g.moveTo(px, py); else g.lineTo(px, py);
+      }
+      g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = 'rgba(255,255,255,0.18)';
+      g.beginPath(); g.ellipse(x - r * 0.25, y - r * 0.25, r * 0.4, r * 0.3, 0, 0, Math.PI * 2); g.fill();
+    }
+
+    // Le hameau : toits plats, murs clairs, contour net.
+    for (const bt of t.batiments) {
+      g.save(); g.translate(bt.x, bt.y); g.rotate(bt.a);
+      g.fillStyle = 'rgba(16,20,12,0.32)';
+      g.fillRect(-bt.w / 2 + 3, -bt.h / 2 + 3.5, bt.w, bt.h);
+      g.fillStyle = '#c9b492'; g.strokeStyle = contour; g.lineWidth = 1.3;
+      g.fillRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h);
+      g.strokeRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h);
+      g.fillStyle = '#9a5138';
+      g.fillRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h * 0.46);
+      g.strokeRect(-bt.w / 2, -bt.h / 2, bt.w, bt.h * 0.46);
+      g.restore();
+    }
 
     v.terrainRendu = c;
   }
@@ -374,11 +441,13 @@
 
     if (b.phase === 'deploiement') dessinerZones(g, b);
 
-    // Corps au sol
-    g.fillStyle = 'rgba(40,26,22,0.55)';
+    // Corps au sol : une tache sombre et un point rouge, pour lire où la ligne a saigné.
     for (const e of b.effets) {
       if (e.type !== 'corps') continue;
-      g.fillRect(e.x - 1.4, e.y - 1.4, 2.8, 2.8);
+      g.fillStyle = 'rgba(46,34,26,0.5)';
+      g.beginPath(); g.ellipse(e.x, e.y, 2.6, 1.8, e.x % 3, 0, Math.PI * 2); g.fill();
+      g.fillStyle = 'rgba(112,32,26,0.4)';
+      g.beginPath(); g.arc(e.x + 0.6, e.y + 0.4, 1.1, 0, Math.PI * 2); g.fill();
     }
 
     // Tracés d'ordres des unités sélectionnées
@@ -437,6 +506,106 @@
     return nation ? nation.couleur : (u.camp === 0 ? '#4a6fb0' : '#a8443c');
   }
 
+  /* ------------------------------------------------- silhouettes des hommes
+     Les hommes sont dessinés une fois par couleur et par orientation dans de
+     petits canevas, puis simplement recopiés : une ligne de cent vingt hommes
+     ne coûte alors qu'une centaine de copies d'image. */
+
+  const NB_ORIENTATIONS = 24;
+  const SPRITE_PX = 48;
+  const SPRITE_M = 7.6;             // ce que représente le canevas, en mètres
+  const SPRITE_CAV_M = 11.4;
+  const cacheSprites = {};
+
+  function sprite(couleur, genre, indexAngle) {
+    const clef = couleur + '|' + genre + '|' + indexAngle;
+    let c = cacheSprites[clef];
+    if (c) return c;
+    c = document.createElement('canvas');
+    c.width = c.height = SPRITE_PX;
+    const g = c.getContext('2d');
+    g.translate(SPRITE_PX / 2, SPRITE_PX / 2);
+    g.rotate((indexAngle / NB_ORIENTATIONS) * Math.PI * 2);
+    dessinerSilhouette(g, couleur, genre);
+    cacheSprites[clef] = c;
+    return c;
+  }
+
+  const PEAU = '#e0ab7d';
+
+  function dessinerSilhouette(g, couleur, genre) {
+    const sombre = teinter(couleur, -0.45);
+    const clair = teinter(couleur, 0.18);
+    const contour = 'rgba(18,16,14,0.85)';
+    g.lineJoin = 'round'; g.lineCap = 'round';
+
+    // Ombre portée, décalée vers le bas à droite comme tout le reste du décor.
+    g.fillStyle = 'rgba(16,20,12,0.32)';
+    g.beginPath();
+    g.ellipse(1.6, 2.4, genre === 'cavalier' ? 12 : 7.5, genre === 'cavalier' ? 6 : 6.5, 0, 0, Math.PI * 2);
+    g.fill();
+
+    if (genre === 'cavalier') {
+      // Le cheval, vu de dessus : croupe, encolure, tête.
+      g.fillStyle = '#6b4a30'; g.strokeStyle = contour; g.lineWidth = 1.1;
+      g.beginPath(); g.ellipse(-1, 0, 11, 5, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.beginPath(); g.ellipse(9, 0, 3.4, 2.6, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = '#4a3220';
+      g.beginPath(); g.ellipse(-10.5, 0, 2.6, 2.2, 0, 0, Math.PI * 2); g.fill();
+      // Le cavalier.
+      g.fillStyle = couleur; g.strokeStyle = contour; g.lineWidth = 1.2;
+      g.beginPath(); g.ellipse(-0.5, 0, 5.2, 4.4, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = clair;
+      g.beginPath(); g.ellipse(-1.6, -1.4, 3, 2, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = PEAU; g.strokeStyle = contour; g.lineWidth = 1;
+      g.beginPath(); g.arc(1.6, 0, 3.2, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = sombre;
+      g.beginPath(); g.moveTo(4.6, 0); g.lineTo(-0.4, -3.4); g.lineTo(-0.4, 3.4); g.closePath(); g.fill();
+      // Le sabre.
+      g.strokeStyle = '#cfd4d8'; g.lineWidth = 1.4;
+      g.beginPath(); g.moveTo(1, 5); g.lineTo(7.5, 9.5); g.stroke();
+      return;
+    }
+
+    // Fantassin : les épaules d'abord, la tête ensuite, puis le fusil.
+    g.fillStyle = couleur; g.strokeStyle = contour; g.lineWidth = 1.2;
+    g.beginPath(); g.ellipse(-1, 0, 6, 7, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+    g.fillStyle = clair;
+    g.beginPath(); g.ellipse(-2, -2, 3.4, 3.6, 0, 0, Math.PI * 2); g.fill();
+    // Buffleteries croisées.
+    g.strokeStyle = 'rgba(238,232,214,0.75)'; g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(-5, -4.5); g.lineTo(2, 3); g.stroke();
+
+    g.fillStyle = PEAU; g.strokeStyle = contour; g.lineWidth = 1;
+    g.beginPath(); g.arc(2.4, 0, 3.6, 0, Math.PI * 2); g.fill(); g.stroke();
+
+    if (genre === 'officier') {
+      g.fillStyle = '#d8c46a'; g.strokeStyle = contour; g.lineWidth = 0.9;
+      g.beginPath(); g.moveTo(6, 0); g.lineTo(-0.6, -4.4); g.lineTo(-0.6, 4.4); g.closePath();
+      g.fill(); g.stroke();
+      g.fillStyle = '#e8e2d0';
+      g.beginPath(); g.ellipse(-1, -4.6, 2.2, 1.4, 0, 0, Math.PI * 2); g.fill();
+    } else {
+      // Tricorne.
+      g.fillStyle = sombre; g.strokeStyle = contour; g.lineWidth = 0.9;
+      g.beginPath(); g.moveTo(6.2, 0); g.lineTo(-0.4, -4.2); g.lineTo(-0.4, 4.2); g.closePath();
+      g.fill(); g.stroke();
+    }
+
+    if (genre !== 'canonnier') {
+      g.strokeStyle = '#3a2c1e'; g.lineWidth = 1.7;
+      g.beginPath(); g.moveTo(1, -5.4); g.lineTo(13.5, -7.2); g.stroke();
+      g.strokeStyle = '#c8ccd0'; g.lineWidth = 1.2;
+      g.beginPath(); g.moveTo(13.5, -7.2); g.lineTo(17.4, -7.8); g.stroke();
+    }
+  }
+
+  function indexOrientation(angle) {
+    let i = Math.round((angle / (Math.PI * 2)) * NB_ORIENTATIONS) % NB_ORIENTATIONS;
+    if (i < 0) i += NB_ORIENTATIONS;
+    return i;
+  }
+
   /** Teinte plus sombre ou plus claire d'une couleur hexadécimale. */
   const cacheTeinte = {};
   function teinter(hex, f) {
@@ -474,66 +643,58 @@
       g.restore();
     } else {
       const monte = u.def.monte;
-      const taille = monte ? 2.2 : 1.5;
-      const sombre = teinter(couleur, -0.45);
+      const genre = u.general ? 'officier' : (monte ? 'cavalier' : (u.def.canon ? 'canonnier' : 'soldat'));
+      // Tous les hommes d'un régiment regardent dans la même direction : une seule
+      // silhouette suffit pour toute l'unité.
+      const img = sprite(couleur, genre, indexOrientation(u.angle));
+      const taille = monte ? SPRITE_CAV_M : SPRITE_M;
+      const demi = taille / 2;
       const cos = Math.cos(u.angle), sin = Math.sin(u.angle);
-
-      // Emprise de la formation : le bloc reste lisible même quand les hommes sont minuscules.
-      if (!u.def.canon && u.formation !== 'tirailleur') {
-        g.save();
-        g.translate(u.x, u.y); g.rotate(u.angle);
-        const l = bb.largeurUnite(u) / 2 + 1, p = bb.profondeurUnite(u) / 2 + 1;
-        g.globalAlpha = u.etat === 'fuite' ? 0.35 : 0.85;
-        g.fillStyle = teinter(couleur, 0.22);
-        g.fillRect(-p, -l, p * 2, l * 2);
-        g.globalAlpha = 1;
-        g.fillStyle = 'rgba(255,255,255,0.55)';
-        g.fillRect(p - 0.9, -l, 0.9, l * 2);      // le front
-        g.fillStyle = 'rgba(0,0,0,0.35)';
-        g.fillRect(-p, -l, 0.7, l * 2);           // l'arrière
-        g.restore();
-      }
-
-      if (monte) {
-        g.fillStyle = 'rgba(18,24,14,0.4)';
-        for (const s of u.soldats) {
-          if (!s.vivant) continue;
-          g.beginPath(); g.ellipse(s.x + 1, s.y + 1.4, taille * 1.6, taille * 0.9, u.angle, 0, Math.PI * 2); g.fill();
-        }
-      }
       for (const s of u.soldats) {
         if (!s.vivant) continue;
-        if (monte) {
-          g.fillStyle = '#4b3524';
-          g.beginPath(); g.ellipse(s.x, s.y, taille * 1.6, taille * 0.9, u.angle, 0, Math.PI * 2); g.fill();
-          g.fillStyle = couleur;
-          g.beginPath(); g.arc(s.x - cos * 0.5, s.y - sin * 0.5, taille * 0.68, 0, Math.PI * 2); g.fill();
-        } else {
-          // Les hommes se détachent en sombre sur l'emprise claire du régiment.
-          g.fillStyle = sombre;
-          g.fillRect(s.x - taille / 2, s.y - taille / 2, taille, taille);
-        }
+        g.drawImage(img, s.x - demi, s.y - demi, taille, taille);
         if (s.feu > 0) {
-          g.fillStyle = 'rgba(255,225,140,0.95)';
-          g.fillRect(s.x + cos * 2.2 - 0.8, s.y + sin * 2.2 - 0.8, 1.8, 1.8);
+          g.fillStyle = 'rgba(255,228,150,0.95)';
+          g.beginPath(); g.arc(s.x + cos * 3.2, s.y + sin * 3.2, 1.5, 0, Math.PI * 2); g.fill();
           s.feu -= 0.02;
         }
       }
       if (u.def.canon) {
         const pieces = u.def.pieces || 4;
         for (let i = 0; i < pieces; i++) {
-          const dec = (i - (pieces - 1) / 2) * 10;
+          const dec = (i - (pieces - 1) / 2) * 12;
           const dx = Math.cos(u.angle + Math.PI / 2) * dec, dy = Math.sin(u.angle + Math.PI / 2) * dec;
           g.save();
           g.translate(u.x + dx, u.y + dy); g.rotate(u.angle);
-          g.fillStyle = 'rgba(20,26,16,0.35)'; g.fillRect(-4, -2.6, 12, 5.2);
-          g.fillStyle = '#4a3b2c'; g.fillRect(-5, -2.6, 9, 5.2);
-          g.fillStyle = '#23282c'; g.fillRect(1, -1.1, 9, 2.2);
-          g.fillStyle = '#5c4a36';
-          g.beginPath(); g.arc(-2, -3, 2.4, 0, Math.PI * 2); g.arc(-2, 3, 2.4, 0, Math.PI * 2); g.fill();
+          g.fillStyle = 'rgba(16,20,12,0.32)';
+          g.beginPath(); g.ellipse(1.5, 2, 8, 4.5, 0, 0, Math.PI * 2); g.fill();
+          g.strokeStyle = 'rgba(18,16,14,0.85)'; g.lineWidth = 0.9;
+          g.fillStyle = '#7a5a3a';                       // l'affût
+          g.beginPath(); g.moveTo(-7, -2.6); g.lineTo(3, -2.2); g.lineTo(3, 2.2); g.lineTo(-7, 2.6); g.closePath();
+          g.fill(); g.stroke();
+          g.fillStyle = '#2b3136';                       // le tube
+          g.beginPath(); g.moveTo(-1, -1.5); g.lineTo(9.5, -1.1); g.lineTo(9.5, 1.1); g.lineTo(-1, 1.5); g.closePath();
+          g.fill(); g.stroke();
+          g.fillStyle = '#5c4630';                       // les roues
+          g.beginPath(); g.arc(-1.5, -3.6, 2.8, 0, Math.PI * 2); g.fill(); g.stroke();
+          g.beginPath(); g.arc(-1.5, 3.6, 2.8, 0, Math.PI * 2); g.fill(); g.stroke();
           g.restore();
         }
       }
+    }
+
+    // Trait au sol : bleu pour vos régiments, rouge pour l'adversaire. C'est ce
+    // qui permet de distinguer les deux camps d'un seul regard.
+    {
+      g.save();
+      g.translate(u.x, u.y); g.rotate(u.angle);
+      const l = bb.largeurUnite(u) / 2, p = bb.profondeurUnite(u) / 2;
+      g.strokeStyle = u.camp === v.camp ? 'rgba(120,180,240,0.55)' : 'rgba(224,96,74,0.6)';
+      g.lineWidth = 1.6;
+      g.beginPath();
+      g.moveTo(-p - 2, -l - 1.5); g.lineTo(-p - 2, l + 1.5);
+      g.stroke();
+      g.restore();
     }
 
     if (selectionne) {
@@ -566,10 +727,8 @@
     g.fillStyle = 'rgba(226,220,204,0.85)';
     g.fillRect(centre.x - w / 2, y + h + 1, w * (n / u.hommesMax), 2.5);
 
-    if (u.camp === v.camp) {
-      g.fillStyle = 'rgba(255,255,255,0.25)';
-      g.fillRect(centre.x - w / 2 - 1, y - 3, w + 2, 1.5);
-    }
+    g.fillStyle = u.camp === v.camp ? '#6ba3e0' : '#d05a4a';
+    g.fillRect(centre.x - w / 2 - 1, y - 3.5, w + 2, 2);
     if (u.etat === 'fuite') {
       g.fillStyle = '#ef7a68'; g.font = 'bold 10px system-ui, sans-serif'; g.textAlign = 'center';
       g.fillText('EN DÉROUTE', centre.x, y - 5);
@@ -615,8 +774,13 @@
     for (const e of b.effets) {
       const k = e.duree > 9000 ? 0 : e.t / e.duree;
       if (e.type === 'fumee') {
-        g.fillStyle = `rgba(226,226,220,${0.30 * (1 - k)})`;
-        g.beginPath(); g.arc(e.x, e.y, e.taille * (1 + k * 1.6), 0, Math.PI * 2); g.fill();
+        // La fumée s'ouvre et se délave : deux disques imbriqués suffisent à la rendre.
+        const r = e.taille * (1 + k * 1.5);
+        const a = 0.34 * (1 - k) * (1 - k * 0.35);
+        g.fillStyle = `rgba(228,228,222,${a * 0.55})`;
+        g.beginPath(); g.arc(e.x, e.y, r, 0, Math.PI * 2); g.fill();
+        g.fillStyle = `rgba(246,246,242,${a})`;
+        g.beginPath(); g.arc(e.x - r * 0.18, e.y - r * 0.18, r * 0.62, 0, Math.PI * 2); g.fill();
       } else if (e.type === 'salve') {
         g.strokeStyle = `rgba(255,220,140,${0.8 * (1 - k)})`;
         g.lineWidth = 2;

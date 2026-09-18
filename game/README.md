@@ -71,6 +71,19 @@ clic droit pour donner un ordre de marche, molette pour zoomer, glisser pour dé
 la vue. Un clic droit sur la province où se trouve déjà l'armée sélectionnée fusionne
 deux armées.
 
+## Le rendu
+
+Tout est dessiné au canvas 2D, dans un style plat et lisible : aplats, contours
+nets, ombres portées décalées, pas de dégradé tape-à-l'œil. Les hommes sont de
+vraies petites silhouettes vues de dessus — corps, tête, tricorne, fusil — pré-
+dessinées une fois par couleur et par orientation, puis recopiées : une ligne de
+cent vingt hommes ne coûte qu'une centaine de copies d'image, et la bataille
+tient les soixante images par seconde avec deux mille hommes à l'écran.
+
+Le terrain change avec la saison : vert au printemps, doré à l'automne, blanc en
+hiver. La fumée de poudre dérive, les morts restent au sol, et un trait bleu ou
+rouge sous chaque régiment dit d'un coup d'œil à qui il appartient.
+
 ## Sous le capot
 
 JavaScript sans dépendances, rendu en canvas 2D. Dix fichiers, aucun outil de build.

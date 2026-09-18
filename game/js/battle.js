@@ -10,9 +10,9 @@
 
   const TERRAIN_W = 1500, TERRAIN_H = 800;
   const GRID = 20;               // pas de la grille de relief, en mètres
-  const ESPACE_X = 1.45;         // intervalle latéral entre deux hommes
-  const ESPACE_Y = 2.2;          // profondeur d'un rang
-  const ESPACE_CAV_X = 2.1, ESPACE_CAV_Y = 3.6;
+  const ESPACE_X = 2.0;          // intervalle latéral entre deux hommes
+  const ESPACE_Y = 2.7;          // profondeur d'un rang
+  const ESPACE_CAV_X = 3.0, ESPACE_CAV_Y = 4.6;
 
   const FORMATIONS = {
     ligne:      { nom: 'Ligne',       rangs: 3, ecart: 1.0, touche: 1.0 },
@@ -54,9 +54,9 @@
 
     // Couvert : bois, champs, marécages, villages.
     const bosquets = [];
-    const nbBois = { foret: 11, collines: 5, plaine: 3, montagne: 4, marais: 6, desert: 0 }[typeTerrain] || 4;
+    const nbBois = { foret: 8, collines: 4, plaine: 3, montagne: 3, marais: 5, desert: 0 }[typeTerrain] || 3;
     for (let i = 0; i < nbBois; i++) {
-      bosquets.push({ x: rng.range(80, TERRAIN_W - 80), y: rng.range(80, TERRAIN_H - 80), r: rng.range(45, 105) });
+      bosquets.push({ x: rng.range(80, TERRAIN_W - 80), y: rng.range(80, TERRAIN_H - 80), r: rng.range(40, 85) });
     }
     const champs = [];
     for (let i = 0; i < 6; i++) {
@@ -612,7 +612,9 @@
     const echantillon = Math.min(liste.length, Math.max(6, Math.round(n / 6)));
     for (let i = 0; i < echantillon; i++) {
       const s = liste[Math.floor(b.rng() * liste.length)];
-      b.effets.push({ type: 'fumee', x: s.x, y: s.y, t: 0, duree: 2.6 + b.rng() * 1.4, taille: 3 + b.rng() * 3 });
+      b.effets.push({ type: 'fumee', x: s.x + b.rng.range(-2, 2), y: s.y + b.rng.range(-2, 2),
+        t: 0, duree: 4.5 + b.rng() * 2.5, taille: 5 + b.rng() * 4,
+        dx: b.rng.range(-0.6, 1.4), dy: b.rng.range(-1.1, 0.2) });
       s.feu = 0.25;
     }
     b.effets.push({ type: 'salve', x: tireur.x, y: tireur.y, angle: tireur.angle, t: 0, duree: 0.35 });
@@ -657,8 +659,9 @@
     }
     b.effets.push({ type: 'canon', x: canon.x, y: canon.y, angle: canon.angle, t: 0, duree: 0.5 });
     for (let i = 0; i < 4; i++) {
-      b.effets.push({ type: 'fumee', x: canon.x + b.rng.range(-8, 8), y: canon.y + b.rng.range(-8, 8),
-        t: 0, duree: 3.5, taille: 8 + b.rng() * 6 });
+      b.effets.push({ type: 'fumee', x: canon.x + b.rng.range(-10, 10), y: canon.y + b.rng.range(-10, 10),
+        t: 0, duree: 6 + b.rng() * 2.5, taille: 11 + b.rng() * 8,
+        dx: b.rng.range(-0.4, 1.6), dy: b.rng.range(-1.3, 0.2) });
     }
   }
 
@@ -897,7 +900,7 @@
       const e = b.effets[i];
       if (e.duree > 9000) continue;                     // les corps restent au sol
       e.t += dt;
-      if (e.type === 'fumee') { e.x += dt * 1.2; e.y -= dt * 0.4; e.taille += dt * 4; }
+      if (e.type === 'fumee') { e.x += (e.dx || 1) * dt * 2.2; e.y += (e.dy || -0.5) * dt * 2.2; e.taille += dt * 2.6; }
       if (e.t >= e.duree) b.effets.splice(i, 1);
     }
     if (b.effets.length > 2600) b.effets.splice(0, b.effets.length - 2600);

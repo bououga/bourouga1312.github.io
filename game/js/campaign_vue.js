@@ -35,6 +35,8 @@
     v.largeur = r.width; v.hauteur = r.height;
     v.zoomMin = Math.max(0.28, Math.min(r.width / W.MAP_W, r.height / W.MAP_H) * 0.9);
     v.camera.zoom = Math.max(v.camera.zoom, v.zoomMin);
+    // La fenêtre a changé de taille : la caméra doit revenir dans les bornes.
+    if (v.largeur > 0) contraindreCamera(v);
   }
 
   function versEcran(v, x, y) {
@@ -139,9 +141,10 @@
     const memeCase = etat.armees.filter((a) => a.province === armee.province);
     const i = memeCase.indexOf(armee);
     const n = memeCase.length;
-    if (n <= 1) return { x: prov.x, y: prov.y + 6 };
+    const base = { x: prov.x + (prov.capitaleNationale ? 12 : 0), y: prov.y + 6 };
+    if (n <= 1) return base;
     const angle = (i / n) * Math.PI * 2;
-    return { x: prov.x + Math.cos(angle) * 17, y: prov.y + 6 + Math.sin(angle) * 13 };
+    return { x: base.x + Math.cos(angle) * 19, y: base.y + Math.sin(angle) * 14 };
   }
 
   function clicGauche(v, prov, m) {
@@ -196,53 +199,82 @@
     return `rgb(${r | 0},${g | 0},${b | 0})`;
   }
 
+  /** Éclaircit ou assombrit une couleur hexadécimale. */
+  const cacheTeinte = {};
+  function teinter(hex, f) {
+    const clef = hex + '|' + f;
+    if (cacheTeinte[clef]) return cacheTeinte[clef];
+    const n = parseInt(hex.slice(1), 16);
+    const m = (c) => Math.round(U.clamp(f < 0 ? c * (1 + f) : c + (255 - c) * f, 0, 255));
+    const v = `rgb(${m((n >> 16) & 255)},${m((n >> 8) & 255)},${m(n & 255)})`;
+    cacheTeinte[clef] = v;
+    return v;
+  }
+
+  const CONTOUR = 'rgba(18,20,16,0.8)';
+
   function dessinerFond(v) {
     const etat = v.etat;
     const c = document.createElement('canvas');
     c.width = W.MAP_W; c.height = W.MAP_H;
     const g = c.getContext('2d');
+    const rng = U.makeRng(etat.seed + 313);
 
-    // Mer
-    const degrade = g.createLinearGradient(0, 0, 0, W.MAP_H);
-    degrade.addColorStop(0, '#22384a');
-    degrade.addColorStop(1, '#2c4a5e');
-    g.fillStyle = degrade;
+    /* --- la mer, à plat --- */
+    g.fillStyle = '#2f5568';
     g.fillRect(0, 0, W.MAP_W, W.MAP_H);
-
-    for (const id of Object.keys(etat.mers)) {
-      const s = etat.mers[id];
-      if (!s.poly.length) continue;
-      trace(g, s.poly);
-      g.fillStyle = 'rgba(255,255,255,0.018)';
-      g.fill();
-      g.strokeStyle = 'rgba(255,255,255,0.05)';
-      g.lineWidth = 1;
-      g.stroke();
+    for (let i = 0; i < 40; i++) {
+      const x = rng() * W.MAP_W, y = rng() * W.MAP_H, r = 90 + rng() * 240;
+      const d = g.createRadialGradient(x, y, 0, x, y, r);
+      d.addColorStop(0, rng() < 0.5 ? 'rgba(90,150,175,0.10)' : 'rgba(20,45,60,0.12)');
+      d.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = d;
+      g.fillRect(x - r, y - r, r * 2, r * 2);
     }
 
-    // Terres
+    /* --- ombre portée des terres, comme les objets du champ de bataille --- */
+    const silhouette = document.createElement('canvas');
+    silhouette.width = W.MAP_W; silhouette.height = W.MAP_H;
+    const sg = silhouette.getContext('2d');
+    sg.fillStyle = '#000';
+    for (const id of etat.ordreProvinces) {
+      const p = etat.provinces[id];
+      if (p.poly.length) { trace(sg, p.poly); sg.fill(); }
+    }
+    g.save();
+    g.globalAlpha = 0.45;
+    g.drawImage(silhouette, 6, 8);
+    g.restore();
+
+    /* --- provinces, en aplats --- */
     for (const id of etat.ordreProvinces) {
       const p = etat.provinces[id];
       if (!p.poly.length) continue;
-      const base = couleurNation(etat, p.nation);
       trace(g, p.poly);
-      g.fillStyle = base;
+      g.fillStyle = teinter(couleurNation(etat, p.nation), -0.2);
       g.fill();
-      // Texture de relief selon le terrain
+
       g.save();
       trace(g, p.poly); g.clip();
-      g.globalAlpha = 0.16;
+      // Une pointe de variation pour que l'aplat ne soit pas mort.
+      const b = boite(p.poly);
+      for (let i = 0; i < 5; i++) {
+        const x = rng.range(b.x0, b.x1), y = rng.range(b.y0, b.y1), r = 40 + rng() * 90;
+        const d = g.createRadialGradient(x, y, 0, x, y, r);
+        d.addColorStop(0, rng() < 0.5 ? 'rgba(255,255,230,0.12)' : 'rgba(0,0,0,0.12)');
+        d.addColorStop(1, 'rgba(0,0,0,0)');
+        g.fillStyle = d;
+        g.fillRect(x - r, y - r, r * 2, r * 2);
+      }
       motifTerrain(g, p);
       g.restore();
-      g.globalAlpha = 1;
-      g.strokeStyle = 'rgba(15,18,22,0.55)';
-      g.lineWidth = 1.6;
+
+      g.strokeStyle = 'rgba(20,22,18,0.45)';
+      g.lineWidth = 1.4;
       trace(g, p.poly); g.stroke();
     }
 
-    // Frontières nationales : trait plus épais entre deux nations différentes.
-    g.lineWidth = 3;
-    g.strokeStyle = 'rgba(12,14,18,0.8)';
+    /* --- frontières entre nations : trait franc --- */
     for (const id of etat.ordreProvinces) {
       const p = etat.provinces[id];
       for (const vid of p.voisins) {
@@ -250,52 +282,90 @@
         if (q.nation === p.nation || vid < id) continue;
         const seg = areteCommune(p.poly, q.poly);
         if (!seg) continue;
-        g.beginPath();
-        g.moveTo(seg[0][0], seg[0][1]);
-        g.lineTo(seg[1][0], seg[1][1]);
-        g.stroke();
+        g.strokeStyle = CONTOUR;
+        g.lineWidth = 3.2;
+        g.lineCap = 'round';
+        g.beginPath(); g.moveTo(seg[0][0], seg[0][1]); g.lineTo(seg[1][0], seg[1][1]); g.stroke();
       }
+    }
+
+    /* --- côtes : liseré sombre autour de chaque terre --- */
+    g.strokeStyle = 'rgba(16,30,38,0.55)';
+    g.lineWidth = 2.4;
+    for (const id of etat.ordreProvinces) {
+      const p = etat.provinces[id];
+      if (!p.mersAdj.length || !p.poly.length) continue;
+      trace(g, p.poly); g.stroke();
     }
 
     v.fond = c;
     v.fondSale = false;
   }
 
+  /** Décor de province : mêmes formes que sur le champ de bataille, en plus petit. */
   function motifTerrain(g, p) {
-    const rng = U.makeRng(p.x * 131 + p.y * 17);
+    const rng = U.makeRng(Math.round(p.x * 131 + p.y * 17));
     const b = boite(p.poly);
-    if (p.terrain === 'foret') {
-      g.fillStyle = '#12301a';
-      for (let i = 0; i < 90; i++) {
+    const aire = (b.x1 - b.x0) * (b.y1 - b.y0);
+    const places = (n, f) => {
+      let poses = 0;
+      for (let i = 0; i < n * 6 && poses < n; i++) {
         const x = rng.range(b.x0, b.x1), y = rng.range(b.y0, b.y1);
-        g.beginPath(); g.moveTo(x, y - 4); g.lineTo(x + 2.4, y + 2); g.lineTo(x - 2.4, y + 2); g.closePath(); g.fill();
+        if (!U.pointInPoly(x, y, p.poly)) continue;
+        if (U.dist2(x, y, p.x, p.y) < 1900) continue;    // on laisse la place au nom et au jeton
+        f(x, y); poses++;
       }
-    } else if (p.terrain === 'montagne') {
-      g.strokeStyle = '#1b1b1b'; g.lineWidth = 1.6;
-      for (let i = 0; i < 40; i++) {
-        const x = rng.range(b.x0, b.x1), y = rng.range(b.y0, b.y1);
-        g.beginPath(); g.moveTo(x - 6, y + 3); g.lineTo(x, y - 5); g.lineTo(x + 6, y + 3); g.stroke();
-      }
-    } else if (p.terrain === 'collines') {
-      g.strokeStyle = '#1e1e1e'; g.lineWidth = 1.3;
-      for (let i = 0; i < 46; i++) {
-        const x = rng.range(b.x0, b.x1), y = rng.range(b.y0, b.y1);
-        g.beginPath(); g.arc(x, y, 4.5, Math.PI, 0); g.stroke();
-      }
-    } else if (p.terrain === 'marais') {
-      g.strokeStyle = '#0d2630'; g.lineWidth = 1.5;
-      for (let i = 0; i < 60; i++) {
-        const x = rng.range(b.x0, b.x1), y = rng.range(b.y0, b.y1);
-        g.beginPath(); g.moveTo(x - 5, y); g.lineTo(x + 5, y); g.stroke();
-      }
+    };
+    const densite = Math.max(5, Math.round(aire / 1250));
+
+    const arbre = (x, y, r) => {
+      g.fillStyle = 'rgba(12,18,10,0.30)';
+      g.beginPath(); g.ellipse(x + r * 0.35, y + r * 0.4, r, r * 0.85, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#3c6630'; g.strokeStyle = CONTOUR; g.lineWidth = 0.9;
+      g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); g.stroke();
+      g.fillStyle = '#4e7d3c';
+      g.beginPath(); g.arc(x - r * 0.28, y - r * 0.3, r * 0.5, 0, Math.PI * 2); g.fill();
+    };
+    const mont = (x, y, h) => {
+      g.fillStyle = 'rgba(12,18,10,0.30)';
+      g.beginPath(); g.moveTo(x - h + 2, y + h * 0.6 + 2); g.lineTo(x + 2, y - h + 2); g.lineTo(x + h + 2, y + h * 0.6 + 2); g.closePath(); g.fill();
+      g.fillStyle = '#8b8378'; g.strokeStyle = CONTOUR; g.lineWidth = 0.9;
+      g.beginPath(); g.moveTo(x - h, y + h * 0.6); g.lineTo(x, y - h); g.lineTo(x + h, y + h * 0.6); g.closePath();
+      g.fill(); g.stroke();
+      g.fillStyle = '#cfd2d0';
+      g.beginPath(); g.moveTo(x - h * 0.34, y - h * 0.35); g.lineTo(x, y - h); g.lineTo(x + h * 0.34, y - h * 0.35); g.closePath(); g.fill();
+    };
+    const colline = (x, y, r) => {
+      g.fillStyle = 'rgba(12,18,10,0.22)';
+      g.beginPath(); g.ellipse(x + 1.5, y + 1.5, r, r * 0.55, 0, Math.PI, 0); g.fill();
+      g.fillStyle = '#7e8a52'; g.strokeStyle = CONTOUR; g.lineWidth = 0.9;
+      g.beginPath(); g.ellipse(x, y, r, r * 0.55, 0, Math.PI, 0); g.closePath(); g.fill(); g.stroke();
+    };
+
+    if (p.terrain === 'foret') places(densite, (x, y) => arbre(x, y, 6 + rng() * 3.5));
+    else if (p.terrain === 'montagne') places(Math.round(densite * 0.8), (x, y) => mont(x, y, 9 + rng() * 5));
+    else if (p.terrain === 'collines') places(densite, (x, y) => colline(x, y, 8 + rng() * 4));
+    else if (p.terrain === 'marais') {
+      places(densite, (x, y) => {
+        g.strokeStyle = 'rgba(32,62,62,0.7)'; g.lineWidth = 2; g.lineCap = 'round';
+        g.beginPath(); g.moveTo(x - 6, y); g.lineTo(x + 6, y);
+        g.moveTo(x - 4, y + 4.5); g.lineTo(x + 4, y + 4.5);
+        g.stroke();
+      });
     } else if (p.terrain === 'desert') {
-      g.fillStyle = '#6b5a35';
-      for (let i = 0; i < 120; i++) {
-        g.fillRect(rng.range(b.x0, b.x1), rng.range(b.y0, b.y1), 2, 1.2);
-      }
+      places(densite, (x, y) => {
+        g.fillStyle = 'rgba(206,182,120,0.5)';
+        g.beginPath(); g.ellipse(x, y, 11, 3.8, 0, 0, Math.PI * 2); g.fill();
+      });
     } else {
-      g.fillStyle = '#2b3a22';
-      for (let i = 0; i < 70; i++) g.fillRect(rng.range(b.x0, b.x1), rng.range(b.y0, b.y1), 3, 1.4);
+      places(Math.round(densite * 0.7), (x, y) => {
+        g.strokeStyle = 'rgba(48,66,32,0.55)'; g.lineWidth = 1.7; g.lineCap = 'round';
+        g.beginPath();
+        g.moveTo(x - 3.6, y + 3); g.lineTo(x - 1.6, y - 2.4);
+        g.moveTo(x, y + 3); g.lineTo(x, y - 3.6);
+        g.moveTo(x + 3.6, y + 3); g.lineTo(x + 1.6, y - 2.4);
+        g.stroke();
+      });
     }
   }
 
@@ -360,12 +430,12 @@
         g.lineWidth = 2 / v.camera.zoom + 1;
         g.stroke();
       }
+      if (p.capitaleNationale) dessinerCapitale(g, p, couleurNation(etat, p.nation));
       if (p.siege) {
-        const e = { x: p.x, y: p.y - 14 };
-        g.fillStyle = '#e0c060';
-        g.beginPath(); g.arc(e.x, e.y, 5, 0, Math.PI * 2); g.fill();
-        g.fillStyle = '#20160a'; g.font = 'bold 7px Georgia'; g.textAlign = 'center';
-        g.fillText('S', e.x, e.y + 2.6);
+        g.fillStyle = '#e8b93f'; g.strokeStyle = CONTOUR; g.lineWidth = 1.2;
+        g.beginPath(); g.arc(p.x + 15, p.y - 15, 6.5, 0, Math.PI * 2); g.fill(); g.stroke();
+        g.fillStyle = '#231a08'; g.font = 'bold 9px system-ui, sans-serif'; g.textAlign = 'center';
+        g.fillText('S', p.x + 15, p.y - 11.8);
       }
     }
 
@@ -378,16 +448,19 @@
     }
 
     // Noms de provinces
-    if (v.camera.zoom > 0.55) {
+    if (v.camera.zoom > 0.5) {
       g.textAlign = 'center';
-      g.font = `${Math.round(11 / Math.max(0.7, v.camera.zoom) + 3)}px Georgia`;
+      const taille = Math.round(11 / Math.max(0.75, v.camera.zoom) + 3.5);
+      g.font = `600 ${taille}px system-ui, "Segoe UI", sans-serif`;
+      g.lineJoin = 'round';
       for (const id of etat.ordreProvinces) {
         const p = etat.provinces[id];
-        g.lineWidth = 3;
-        g.strokeStyle = 'rgba(0,0,0,0.55)';
-        g.strokeText(p.nom, p.x, p.y - 12);
-        g.fillStyle = 'rgba(255,252,240,0.92)';
-        g.fillText(p.nom, p.x, p.y - 12);
+        const y = p.y - 22;
+        g.lineWidth = 4;
+        g.strokeStyle = 'rgba(14,16,12,0.85)';
+        g.strokeText(p.nom, p.x, y);
+        g.fillStyle = '#f4f1e6';
+        g.fillText(p.nom, p.x, y);
       }
     }
 
@@ -424,50 +497,87 @@
     g.beginPath(); g.arc(fin.x, fin.y, 4.5, 0, Math.PI * 2); g.fill();
   }
 
+  /** Petite icône de ville pour les capitales. */
+  function dessinerCapitale(g, p, couleur) {
+    const x = p.x - 17, y = p.y + 3;
+    g.fillStyle = 'rgba(12,16,10,0.35)';
+    g.fillRect(x - 7, y - 3, 16, 12);
+    g.fillStyle = '#d9cdb2'; g.strokeStyle = CONTOUR; g.lineWidth = 1.2;
+    g.fillRect(x - 9, y - 5, 16, 12); g.strokeRect(x - 9, y - 5, 16, 12);
+    g.fillStyle = teinter(couleur, -0.3);
+    g.fillRect(x - 9, y - 5, 16, 5); g.strokeRect(x - 9, y - 5, 16, 5);
+    g.fillStyle = '#5b4a33';
+    g.fillRect(x - 2.5, y + 2, 3.5, 5);
+    g.strokeStyle = CONTOUR; g.lineWidth = 0.9;
+    g.strokeRect(x - 2.5, y + 2, 3.5, 5);
+  }
+
   function dessinerArmee(g, v, armee) {
     const etat = v.etat;
     const p = positionArmee(etat, armee);
-    const n = armee.unites.length;
     const couleur = couleurNation(etat, armee.nation);
-    const taille = 8 + Math.min(8, n * 0.45);
     const sel = v.armeeSelection === armee;
+    const r = 11;
 
     g.save();
     g.translate(p.x, p.y);
-    // Socle
-    g.beginPath();
-    g.ellipse(0, taille * 0.55, taille * 0.95, taille * 0.4, 0, 0, Math.PI * 2);
-    g.fillStyle = 'rgba(0,0,0,0.35)'; g.fill();
 
-    // Étendard
+    // Ombre, puis le jeton lui-même.
+    g.fillStyle = 'rgba(12,16,10,0.35)';
+    rectArrondi(g, -r + 2.5, -r + 3.5, r * 2, r * 2, 4); g.fill();
+
     g.fillStyle = couleur;
-    g.strokeStyle = sel ? '#ffe9a8' : 'rgba(10,10,12,0.8)';
-    g.lineWidth = sel ? 2.4 : 1.4;
-    g.beginPath();
-    g.moveTo(-taille * 0.55, -taille);
-    g.lineTo(taille * 0.75, -taille * 0.72);
-    g.lineTo(-taille * 0.55, -taille * 0.44);
-    g.closePath();
-    g.fill(); g.stroke();
-    g.beginPath();
-    g.moveTo(-taille * 0.55, -taille - 1);
-    g.lineTo(-taille * 0.55, taille * 0.5);
-    g.strokeStyle = '#2a2018'; g.lineWidth = 1.8; g.stroke();
+    g.strokeStyle = sel ? '#ffe9a8' : CONTOUR;
+    g.lineWidth = sel ? 2.4 : 1.6;
+    rectArrondi(g, -r, -r, r * 2, r * 2, 4); g.fill(); g.stroke();
 
-    // Effectif
+    // Reflet en haut à gauche, comme sur tout le reste du décor.
+    g.fillStyle = 'rgba(255,255,255,0.18)';
+    rectArrondi(g, -r + 1.5, -r + 1.5, r * 1.1, r * 0.8, 2.5); g.fill();
+
+    // Symbole : deux fusils croisés pour l'infanterie, un fer à cheval pour la cavalerie.
+    const cav = armee.unites.filter((u) => {
+      const d = K().unitById[u.type];
+      return A.CATEGORIES[d.cat].classe === 'cavalerie';
+    }).length;
+    const cavalerieDominante = cav > armee.unites.length / 2;
+    g.strokeStyle = 'rgba(22,20,16,0.85)'; g.lineWidth = 1.8; g.lineCap = 'round';
+    if (cavalerieDominante) {
+      g.beginPath(); g.arc(0, 0.5, 4.6, Math.PI * 0.18, Math.PI * 0.82, true); g.stroke();
+      g.beginPath(); g.moveTo(-3.6, 3.4); g.lineTo(-3.6, 5.2);
+      g.moveTo(3.6, 3.4); g.lineTo(3.6, 5.2); g.stroke();
+    } else {
+      g.beginPath(); g.moveTo(-4.6, 4.6); g.lineTo(4.6, -4.6);
+      g.moveTo(4.6, 4.6); g.lineTo(-4.6, -4.6); g.stroke();
+    }
+
+    // Effectif, sur une pastille sous le jeton.
     const hommes = K().effectif(armee);
-    g.font = 'bold 9px system-ui, sans-serif';
-    g.textAlign = 'center';
-    g.fillStyle = 'rgba(0,0,0,0.65)';
-    g.fillRect(-13, taille * 0.62, 26, 11);
-    g.fillStyle = '#f2ead6';
-    g.fillText(hommes >= 1000 ? (hommes / 1000).toFixed(1) + 'k' : String(hommes), 0, taille * 0.62 + 8.4);
+    const texte = hommes >= 1000 ? (hommes / 1000).toFixed(1).replace('.0', '') + 'k' : String(hommes);
+    g.font = '600 10px system-ui, sans-serif';
+    const larg = Math.max(22, g.measureText(texte).width + 9);
+    g.fillStyle = 'rgba(16,18,14,0.92)';
+    rectArrondi(g, -larg / 2, r - 1, larg, 12, 3); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,0.18)'; g.lineWidth = 1;
+    rectArrondi(g, -larg / 2, r - 1, larg, 12, 3); g.stroke();
+    g.fillStyle = '#f1ede1'; g.textAlign = 'center';
+    g.fillText(texte, 0, r + 8);
 
     if (armee.enSiege) {
-      g.fillStyle = '#e0c060';
-      g.beginPath(); g.arc(taille * 0.8, -taille * 0.9, 3.4, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#e8b93f'; g.strokeStyle = CONTOUR; g.lineWidth = 1.1;
+      g.beginPath(); g.arc(r - 1, -r + 1, 4.4, 0, Math.PI * 2); g.fill(); g.stroke();
     }
     g.restore();
+  }
+
+  function rectArrondi(g, x, y, w, h, r) {
+    g.beginPath();
+    g.moveTo(x + r, y);
+    g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r);
+    g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r);
+    g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y);
+    g.closePath();
   }
 
   /* ----------------------------------------------------------- utilitaires */
