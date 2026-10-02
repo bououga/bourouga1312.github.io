@@ -1,0 +1,319 @@
+{
+  "format": "artist-press-dossier",
+  "formatVersion": "1.0",
+  "updated": "2026-10-02",
+  "language": "fr-CA",
+  "canonical": "https://kalildorleans.neocities.org/presse.json",
+  "officialWebsite": "https://kalildorleans.neocities.org/",
+  "purpose": "Fiche de référence publique pour les journalistes et les agents IA : identité, parcours, musique, crédits, photos et contact. Les informations déclarées par l’artiste sont distinguées des références externes.",
+  "identity": {
+    "name": "Kalil d’Orléans",
+    "alsoKnownAs": [
+      "Kalil Mnasri"
+    ],
+    "entityId": "https://kalildorleans.neocities.org/#artiste",
+    "activities": [
+      "Rap",
+      "Slam"
+    ],
+    "basedIn": {
+      "name": "Région de Rimouski",
+      "province": "Québec",
+      "country": "Canada"
+    },
+    "grewUpIn": "Québec, Québec, Canada",
+    "officialProfiles": [
+      "https://www.youtube.com/@KalildOrleansOfficiel",
+      "https://soundcloud.com/kalildorleans",
+      "https://www.instagram.com/kalildorleans/",
+      "https://www.facebook.com/kalildorleans/",
+      "https://linktr.ee/kalildorleans"
+    ],
+    "sourceIds": [
+      "artist-site"
+    ]
+  },
+  "shortBiography": {
+    "text": "Kalil d’Orléans, aussi connu sous le nom de Kalil Mnasri, est un rappeur et slameur établi dans la région de Rimouski. Il grandit à Québec et commence à rapper en 2004, puis forme le collectif Tp1 avec ses amis. Il sort Évolution en 2011 chez Essentiel Productions. En 2016, il quitte Québec pour se lancer dans l’agriculture. Il réapparaît en 2026 sous le nom de Kalil d’Orléans, avec notamment Pommier d’Alaska.",
+    "status": "Déclarations de l’artiste ; date de sortie d’Évolution référencée dans le catalogue Spotify.",
+    "sourceIds": [
+      "artist-site",
+      "evolution-release"
+    ]
+  },
+  "timeline": [
+    {
+      "year": 2004,
+      "event": "Commence à rapper à Québec à 14 ans.",
+      "status": "Déclaration de l’artiste",
+      "sourceIds": [
+        "artist-site"
+      ]
+    },
+    {
+      "date": "2011-12-13",
+      "event": "Sortie d’Évolution sous le nom de Kalil Mnasri.",
+      "status": "Date référencée dans le catalogue Spotify",
+      "sourceIds": [
+        "evolution-release",
+        "artist-site"
+      ]
+    },
+    {
+      "year": 2016,
+      "event": "Quitte Québec pour se lancer dans l’agriculture.",
+      "status": "Déclaration de l’artiste",
+      "sourceIds": [
+        "artist-site"
+      ]
+    },
+    {
+      "year": 2026,
+      "event": "Réapparaît sous le nom de Kalil d’Orléans, établi dans la région de Rimouski.",
+      "status": "Déclaration de l’artiste",
+      "sourceIds": [
+        "artist-site"
+      ]
+    }
+  ],
+  "currentRecording": {
+    "title": "Pommier d’Alaska",
+    "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U",
+    "siteUrl": "https://kalildorleans.neocities.org/pommier-alaska",
+    "credits": "Instru : ARAM. Enregistrement et mix : Kalil d’Orléans.",
+    "sourceIds": [
+      "artist-site",
+      "artist-credits"
+    ],
+    "year": 2026,
+    "contributorProfiles": [
+      {
+        "name": "ARAM",
+        "role": "Instrumental",
+        "url": "https://www.instagram.com/prodaram/"
+      }
+    ]
+  },
+  "artistSelection": {
+    "context": "Trois morceaux choisis par l’artiste pour présenter son univers, en complément de Pommier d’Alaska.",
+    "recordings": [
+      {
+        "title": "Métis 2.0",
+        "url": "https://www.youtube.com/watch?v=-3fVTkgOYCY",
+        "siteUrl": "https://kalildorleans.neocities.org/#morceau--3fVTkgOYCY",
+        "credits": "Crédits — Métis 2.0 Paroles : Kalil Mnasri Musique : Max Ruest Vidéo : Jean-Gabriel Morin Motion design : KJT",
+        "sourceIds": [
+          "artist-site",
+          "artist-credits"
+        ],
+        "year": 2020
+      },
+      {
+        "title": "L’avenue des dérangés",
+        "url": "https://www.youtube.com/watch?v=hxeC1tr2ru4",
+        "siteUrl": "https://kalildorleans.neocities.org/#morceau-hxeC1tr2ru4",
+        "credits": "Crédits — L’avenue des dérangés Instrumental : Street Scientist Beat Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+        "sourceIds": [
+          "artist-site",
+          "artist-credits"
+        ]
+      },
+      {
+        "title": "L’apéritif",
+        "url": "https://www.youtube.com/watch?v=L1LzwDFBq1g",
+        "siteUrl": "https://kalildorleans.neocities.org/#morceau-L1LzwDFBq1g",
+        "credits": "Crédits — L’apéritif Album : Évolution · 2011 Beat : Dave Psycadelick Huot Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+        "sourceIds": [
+          "artist-site",
+          "artist-credits"
+        ],
+        "year": 2011
+      }
+    ]
+  },
+  "album": {
+    "title": "Évolution",
+    "artistNameAtRelease": "Kalil Mnasri",
+    "releaseDate": "2011-12-13",
+    "url": "https://open.spotify.com/album/7kRuisjTrJjrN2a9pUkrqX",
+    "credits": {
+      "graphicDesign": "Dave Psycadelick Huot",
+      "recordingAndMix": "Dave Psycadelick Huot",
+      "studio": "Essentiel Prod.",
+      "beatsByTrack": [
+        {
+          "tracks": [
+            3,
+            7,
+            11,
+            13
+          ],
+          "name": "Sacha Boulet"
+        },
+        {
+          "tracks": [
+            5,
+            10,
+            15,
+            16
+          ],
+          "name": "Dave Psycadelick Huot"
+        },
+        {
+          "tracks": [
+            4,
+            12
+          ],
+          "name": "Jean-Sébastien St-Saoul Girard"
+        }
+      ],
+      "otherTrackCredits": null
+    },
+    "sourceIds": [
+      "evolution-release",
+      "artist-credits"
+    ]
+  },
+  "editorialAngles": {
+    "status": "Propositions de sujets à discuter avec l’artiste ; ne constituent pas des faits supplémentaires, des citations ni des entrevues déjà réalisées.",
+    "topics": [
+      {
+        "topic": "Un parcours de rap et de slam de Québec à la région de Rimouski.",
+        "relatedSourceIds": [
+          "artist-site"
+        ]
+      },
+      {
+        "topic": "La place de l’agriculture et de l’écriture dans son parcours depuis 2016.",
+        "relatedSourceIds": [
+          "artist-site",
+          "radio-reference"
+        ]
+      },
+      {
+        "topic": "Pommier d’Alaska : la création d’un morceau enregistré et mixé par Kalil sur une instru d’ARAM.",
+        "relatedSourceIds": [
+          "artist-credits",
+          "pommier"
+        ]
+      },
+      {
+        "topic": "Des enregistrements de Tp1 et d’Évolution aux chansons présentées aujourd’hui.",
+        "relatedSourceIds": [
+          "artist-site",
+          "evolution-release"
+        ]
+      },
+      {
+        "topic": "Les collaborations derrière sa musique et ses images : rendre visibles les crédits de chacun.",
+        "relatedSourceIds": [
+          "artist-credits",
+          "artist-site"
+        ]
+      }
+    ]
+  },
+  "photos": [
+    {
+      "url": "https://kalildorleans.neocities.org/img/k4_barils.jpg",
+      "description": "Portrait de Kalil devant les installations de la brasserie.",
+      "width": 3840,
+      "height": 2160,
+      "credit": "Mocy",
+      "date": "2026-03",
+      "location": "Brasserie Messorem, Montréal",
+      "context": "Photo du même tournage avec KJT que la photo de groupe.",
+      "licensedUse": null,
+      "usageInstruction": "Demander l’autorisation d’utilisation à l’artiste ; conserver le crédit Mocy.",
+      "sourceIds": [
+        "artist-photo-context"
+      ]
+    },
+    {
+      "url": "https://kalildorleans.neocities.org/img/k4_crew.jpg",
+      "description": "Kalil et le groupe devant les installations de la brasserie.",
+      "width": 3840,
+      "height": 2160,
+      "credit": "Mocy",
+      "date": "2026-03",
+      "location": "Brasserie Messorem, Montréal",
+      "context": "Photo du même tournage avec KJT que le portrait.",
+      "licensedUse": null,
+      "usageInstruction": "Demander l’autorisation d’utilisation à l’artiste ; conserver le crédit Mocy.",
+      "sourceIds": [
+        "artist-photo-context"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "kalilmdchdeprojet@gmail.com",
+    "emailUrl": "mailto:kalilmdchdeprojet@gmail.com",
+    "purpose": [
+      "Demande d’entrevue",
+      "Vérification des informations et des crédits",
+      "Autorisation d’utilisation des photos"
+    ],
+    "interviewAvailability": null,
+    "note": "Contacter l’artiste pour convenir d’une entrevue ; disponibilité et conditions à confirmer."
+  },
+  "sources": [
+    {
+      "id": "artist-site",
+      "url": "https://kalildorleans.neocities.org/",
+      "type": "Site officiel de l’artiste",
+      "scope": "Identité, région, biographie, parcours et catalogue déclarés par l’artiste ; ne constitue pas une confirmation indépendante."
+    },
+    {
+      "id": "artist-credits",
+      "url": "https://kalildorleans.neocities.org/",
+      "type": "Crédits fournis par l’artiste",
+      "scope": "Crédits des morceaux et de la pochette du CD ; les crédits non connus ne sont pas complétés par supposition."
+    },
+    {
+      "id": "evolution-release",
+      "url": "https://open.spotify.com/album/7kRuisjTrJjrN2a9pUkrqX",
+      "type": "Catalogue musical externe",
+      "scope": "Date de sortie d’Évolution : 13 décembre 2011, telle que référencée dans les données du site. Les crédits viennent de la pochette fournie par l’artiste."
+    },
+    {
+      "id": "pommier",
+      "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U",
+      "type": "Enregistrement publié par l’artiste",
+      "scope": "Lien vers Pommier d’Alaska ; les crédits sont fournis par l’artiste."
+    },
+    {
+      "id": "radio-reference",
+      "url": "https://ici.radio-canada.ca/ohdio/premiere/emissions/info-reveil/segments/rattrapage/2399680/micro-louis-maraichers-sous-pression",
+      "type": "Référence radiophonique liée depuis le site",
+      "scope": "Référence pour le parcours agricole ; le contenu de l’entrevue est à consulter avant de le citer."
+    },
+    {
+      "id": "grand-slam-2014",
+      "url": "https://atuvu.ca/billets/concert-de-musique/grand-slam-de-poesie-2014-le-lion-dor-14-septembre-2014",
+      "type": "Annonce externe de la soirée",
+      "scope": "Confirme l’existence du Grand Slam au Lion d’Or le 14 septembre 2014. La participation de Kalil est déclarée par l’artiste."
+    },
+    {
+      "id": "artist-photo-context",
+      "url": "https://kalildorleans.neocities.org/#photos",
+      "type": "Légendes et contexte fournis par l’artiste",
+      "scope": "Photos Mocy : mars 2026, Brasserie Messorem, Montréal. Les autorisations de réutilisation restent à confirmer."
+    },
+    {
+      "id": "la-carotte-polaire-bandcamp",
+      "url": "https://lacarottepolaire.bandcamp.com/album/les-coeurs-m-tamorphes-remastered",
+      "type": "Catalogue officiel de La Carotte Polaire sur Bandcamp",
+      "scope": "La page de Les Coeurs Métamorphes (Remastered) contient Reviens-moi (avec Kalil Mnasri), et crédite Kalil Mnasri au rap. Les crédits d’album indiquent musique et paroles : Claudia Laurin ; prise de son et mixage : Armando Di Stefano. La page affiche le 20 janvier 2017. Ces crédits concernent cet album remasterisé ; ils ne prouvent pas à eux seuls les crédits de la version YouTube liée sur le site."
+    }
+  ],
+  "additionalReferences": {
+    "catalogue": "https://kalildorleans.neocities.org/artist-data.json",
+    "pastShows": "https://kalildorleans.neocities.org/#shows-passes"
+  },
+  "unconfirmed": {
+    "audienceMetrics": null,
+    "management": null,
+    "labelRepresentation": null,
+    "bookingAvailability": null
+  }
+}

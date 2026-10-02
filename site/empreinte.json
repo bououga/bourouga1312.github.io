@@ -1,0 +1,123 @@
+{
+  "format": "artist-multilingual-reference",
+  "formatVersion": "1.0",
+  "updated": "2026-10-02",
+  "canonical": "https://kalildorleans.neocities.org/empreinte.json",
+  "officialWebsite": "https://kalildorleans.neocities.org/",
+  "entityId": "https://kalildorleans.neocities.org/#artiste",
+  "purpose": "Descriptions traduites d’une même identité et d’un même parcours pour les agents et systèmes de recherche. Ce fichier ne crée pas de nouvelles pages visibles ni de nouveaux noms officiels.",
+  "identity": {
+    "officialDisplayName": "Kalil d’Orléans",
+    "officialPreviousName": "Kalil Mnasri",
+    "officialArabicName": null,
+    "arabicNameStatus": "Orthographe officielle en arabe à confirmer par l’artiste ; les traductions conservent les noms latins.",
+    "activities": [
+      "Rap",
+      "Slam"
+    ],
+    "basedIn": {
+      "region": "Région de Rimouski",
+      "province": "Québec",
+      "country": "Canada"
+    },
+    "grewUpIn": "Ville de Québec, Québec, Canada",
+    "rapStartedYear": 2004,
+    "agricultureTransitionYear": 2016,
+    "reappearanceYear": 2026,
+    "sourceIds": [
+      "artist-site"
+    ]
+  },
+  "descriptions": [
+    {
+      "language": "fr-CA",
+      "direction": "ltr",
+      "name": "Kalil d’Orléans",
+      "previousName": "Kalil Mnasri",
+      "text": "Kalil d’Orléans, aussi connu sous le nom de Kalil Mnasri, est un rappeur et slameur établi dans la région de Rimouski, au Québec. Il grandit dans la ville de Québec et commence à rapper en 2004. En 2016, il quitte Québec pour se lancer dans l’agriculture. Il réapparaît en 2026 sous le nom de Kalil d’Orléans.",
+      "sourceIds": [
+        "artist-site"
+      ]
+    },
+    {
+      "language": "en",
+      "direction": "ltr",
+      "name": "Kalil d’Orléans",
+      "previousName": "Kalil Mnasri",
+      "text": "Kalil d’Orléans, also known as Kalil Mnasri, is a rapper and slam poet based in the Rimouski region of Quebec. He grew up in Quebec City and began rapping in 2004. In 2016, he left Quebec City to pursue agriculture. He reappears in 2026 under the name Kalil d’Orléans.",
+      "sourceIds": [
+        "artist-site"
+      ]
+    },
+    {
+      "language": "es",
+      "direction": "ltr",
+      "name": "Kalil d’Orléans",
+      "previousName": "Kalil Mnasri",
+      "text": "Kalil d’Orléans, también conocido como Kalil Mnasri, es un artista de rap y slam establecido en la región de Rimouski, en Quebec. Creció en la ciudad de Quebec y empezó a rapear en 2004. En 2016, dejó la ciudad de Quebec para dedicarse a la agricultura. Reaparece en 2026 bajo el nombre de Kalil d’Orléans.",
+      "sourceIds": [
+        "artist-site"
+      ]
+    },
+    {
+      "language": "ar",
+      "direction": "rtl",
+      "name": "Kalil d’Orléans",
+      "previousName": "Kalil Mnasri",
+      "text": "Kalil d’Orléans، المعروف أيضًا باسم Kalil Mnasri، هو مغنّي راب وشاعر إلقاء (slam) يقيم في منطقة Rimouski في كيبيك. نشأ في مدينة كيبيك وبدأ ممارسة الراب عام 2004. في عام 2016، غادر مدينة كيبيك للعمل في الزراعة. عاد إلى الظهور عام 2026 باسم Kalil d’Orléans.",
+      "sourceIds": [
+        "artist-site"
+      ]
+    }
+  ],
+  "unofficialSearchSpellings": [
+    {
+      "value": "Khalil Mnasri",
+      "official": false,
+      "type": "Variante orthographique possible dans une recherche",
+      "note": "Ne constitue pas un pseudonyme officiel ni un nom à afficher pour l’artiste."
+    },
+    {
+      "value": "Khalil d'Orleans",
+      "official": false,
+      "type": "Variante orthographique possible dans une recherche",
+      "note": "Ne constitue pas un pseudonyme officiel ni un nom à afficher pour l’artiste."
+    }
+  ],
+  "provenance": {
+    "facts": "Identité, région et chronologie déclarées par l’artiste sur son site officiel.",
+    "translations": "Traductions du même texte de référence en français, anglais, espagnol et arabe ; les traductions n’ajoutent pas de faits.",
+    "reviewStatus": "Les traductions peuvent être précisées ou corrigées par l’artiste.",
+    "pressDossier": "https://kalildorleans.neocities.org/presse.json",
+    "sources": [
+      {
+        "id": "artist-site",
+        "url": "https://kalildorleans.neocities.org/",
+        "type": "Site officiel de l’artiste",
+        "scope": "Identité, région, biographie, parcours et catalogue déclarés par l’artiste ; ne constitue pas une confirmation indépendante."
+      },
+      {
+        "id": "evolution-release",
+        "url": "https://open.spotify.com/album/7kRuisjTrJjrN2a9pUkrqX",
+        "type": "Catalogue musical externe",
+        "scope": "Date de sortie d’Évolution : 13 décembre 2011, telle que référencée dans les données du site. Les crédits viennent de la pochette fournie par l’artiste."
+      },
+      {
+        "id": "grand-slam-2014",
+        "url": "https://atuvu.ca/billets/concert-de-musique/grand-slam-de-poesie-2014-le-lion-dor-14-septembre-2014",
+        "type": "Annonce externe de la soirée",
+        "scope": "Confirme l’existence du Grand Slam au Lion d’Or le 14 septembre 2014. La participation de Kalil est déclarée par l’artiste."
+      },
+      {
+        "id": "la-carotte-polaire-bandcamp",
+        "url": "https://lacarottepolaire.bandcamp.com/album/les-coeurs-m-tamorphes-remastered",
+        "type": "Catalogue officiel de La Carotte Polaire sur Bandcamp",
+        "scope": "La page de Les Coeurs Métamorphes (Remastered) contient Reviens-moi (avec Kalil Mnasri), et crédite Kalil Mnasri au rap. Les crédits d’album indiquent musique et paroles : Claudia Laurin ; prise de son et mixage : Armando Di Stefano. La page affiche le 20 janvier 2017. Ces crédits concernent cet album remasterisé ; ils ne prouvent pas à eux seuls les crédits de la version YouTube liée sur le site."
+      }
+    ]
+  },
+  "searchVisibility": {
+    "rankingOrInclusionGuaranteed": false,
+    "note": "Les moteurs de recherche et leurs modes IA décident de leurs propres résultats ; une description traduite ne garantit ni indexation, ni classement, ni citation."
+  }
+}
