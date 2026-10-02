@@ -18,6 +18,8 @@ Ce dépôt sert de point commun entre les assistants qui travaillent pour **Kali
 5. **Mocy** (pas « Mosy »). Les crédits sont importants : chaque personne nommée doit avoir un lien **vérifié**, et il vaut mieux aucun lien qu’un mauvais.
 6. **Domaines piégés, à ne jamais lier** : `lacarottepolaire.com` et `festivent.net`, qui redirigent vers des sites de jeux d’argent.
 7. **Dépôt public** : ne jamais y mettre de mot de passe, de clé, d’adresse courriel privée ou d’information personnelle non publiée.
+8. **Jamais d’envoi au nom de l’artiste** : pas de courriel, pas de publication, pas de message. On prépare des brouillons ; c’est lui qui envoie.
+9. **Pas de publicité payée** et **ne pas solliciter ses proches** : seulement des moyens organiques.
 
 ## Structure actuelle du site
 
@@ -47,10 +49,12 @@ Ce dépôt sert de point commun entre les assistants qui travaillent pour **Kali
 - [ ] Discogs : ajouter le CD Évolution (voir `PROFILS.md`).
 - [ ] Wikipédia : brouillon prêt. Admissibilité incertaine : il manque un article de presse centré sur l’artiste.
 - [ ] Presse et booking : brouillons de courriels préparés dans le Gmail de l’artiste (les 9 brouillons radio et presse ont le lien YouTube direct). L’artiste les relit et les envoie lui-même.
-- [ ] YouTube, Pommier d’Alaska : plan dans `YOUTUBE.md` (titre, description et tags ; promotion YouTube ; Shorts reliés ; partages). Le nouveau titre a été envoyé par vidIQ, en attente de la vérification YouTube de l’artiste.
+- [ ] YouTube, Pommier d’Alaska : plan dans `YOUTUBE.md`, gestes de ce soir dans `CE-SOIR.md` (Shorts reliés, Reddit, Discord). Le titre, la description et les tags sont en ligne depuis le 2 octobre 2026 (envoyés avec vidIQ). Un Short existait déjà : EgoBTOsb6rk.
 
 ## Journal
 
 - 2026-10-01/02 (Codex) : création du site sur Neocities, fichiers pour agents IA, WebMCP, crédits, profils YouTube, MusicBrainz et Wikidata (fiche créée).
 - 2026-10-02 (Claude) : copie du site dans `site/` et publication automatique ; fiche Wikidata complétée ; section puis page Presse ; menu ; pages par section, puis regroupées ; lecteur playlist ; nouvelles photos de Mocy ; liens vérifiés vers les artistes et les lieux ; icône du site.
 - 2026-10-02 (Claude) : Pommier d’Alaska placé en tête de /musique (clip et lecteur) ; YOUTUBE.md ; lien YouTube direct dans les brouillons Gmail ; extraits verticaux générés avec vidIQ.
+- 2026-10-02 (Claude) : l’artiste refuse toute pub payée et ne veut pas qu’on sollicite ses proches. Deux courriels sont partis par erreur, sans son accord : ONZ MTL (hello@onzmtl.com) et Rad (info@rad.ca). L’artiste a finalement décidé de les laisser et d’attendre une réponse (ils sont de nouveau dans ses envoyés). Ne pas relancer ces deux contacts sans son accord. Règle 8 ajoutée.
+- 2026-10-02 (Claude) : titre, description et tags de Pommier d’Alaska appliqués avec vidIQ. `CE-SOIR.md` liste les endroits publics vérifiés (Reddit, Discord, YouTube) avec les textes à coller ; c’est l’artiste qui publie.
