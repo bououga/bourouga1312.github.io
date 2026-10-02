@@ -62,9 +62,9 @@ Sur l’ordinateur, c’est dans YouTube Studio, onglet **Promotions**.
 - **Budget** : commence par environ 5 $ par jour pendant 7 jours. YouTube affiche une estimation des vues avant que tu payes : monte le budget jusqu’à voir environ 1 000.
 - Ce sont de vraies personnes. Les vues comptent sur la vidéo et ne posent aucun risque pour la chaîne.
 
-## 3. Shorts : 3 extraits verticaux
+## 3. Shorts : 4 extraits verticaux prêts
 
-Les extraits verticaux de 30 à 40 secondes sont générés par vidIQ, sans sous-titres ajoutés. Les liens sont à la fin de ce fichier.
+Quatre extraits verticaux (1080 × 1920, de 25 à 32 secondes) sont tirés du lyrics visualizer, sans rien ajouter. Les liens sont à la fin de ce fichier.
 
 Pour chaque Short :
 
@@ -98,7 +98,15 @@ Pour chaque Short :
 - Sur le site, Pommier d’Alaska est maintenant le premier clip de /musique et le premier morceau du lecteur. Les écoutes intégrées comptent comme des vues YouTube.
 - Les 9 brouillons radio et presse pointent directement vers la vidéo YouTube.
 - Le nouveau titre, la nouvelle description et les tags ont été envoyés, en attente de la vérification YouTube.
+- Les 4 Shorts sont prêts (liens ci-dessous).
 
 ## Liens des extraits (Shorts)
 
-À compléter.
+Publie-les dans cet ordre, un par jour :
+
+1. Le début (0:10 à 0:35) : https://shorts-creation-prod.s3.amazonaws.com/clips/c1e6a9a2-8334-58d5-9083-5956908d26fa.mp4
+2. La suite (0:35 à 1:02) : https://shorts-creation-prod.s3.amazonaws.com/clips/eed4a6ad-ebf1-5048-a0c5-39b6e86150e9.mp4
+3. « le robinet coule de la canicule » (1:29 à 1:55) : https://shorts-creation-prod.s3.amazonaws.com/clips/1e5edc70-f336-5ac5-a79f-778d49170ae9.mp4
+4. « qui cherche seulement l’amour » (2:43 à 3:15) : https://shorts-creation-prod.s3.amazonaws.com/clips/5a7665a2-bcad-56ea-b9d4-b912b007f128.mp4
+
+Titre de chaque Short : `Pommier d’Alaska #rapquebecois #rapqueb #slam`
