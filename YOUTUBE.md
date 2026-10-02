@@ -1,14 +1,13 @@
-# YouTube : faire monter Pommier d’Alaska
+# YouTube : faire monter Pommier d’Alaska (sans pub)
 
 Vidéo : https://www.youtube.com/watch?v=OnxQtO7Ki1U
 Au 2 octobre 2026 : 328 vues, 11 j’aime, 3 commentaires.
 
 Ce qui fait vraiment monter les vues, dans l’ordre :
 
-1. Une promotion YouTube payée, qui donne des vues réelles et vite.
-2. Des Shorts reliés à la vidéo complète.
-3. Des envois aux radios et aux médias.
-4. Des partages faits par des gens.
+1. Des Shorts reliés à la vidéo complète.
+2. Des envois aux radios et aux médias.
+3. Des partages faits par des gens.
 
 Pas de vues achetées sur d’autres sites : YouTube les repère, les retire et peut pénaliser la chaîne.
 
@@ -52,17 +51,7 @@ Kalil d’Orléans, Kalil d'Orleans, Kalil Mnasri, Pommier d’Alaska, Pommier d
 
 Pourquoi ces mots : selon vidIQ, « rap quebecois » (sans accent) fait environ 5 100 recherches par mois sur YouTube, avec peu de concurrence. « rap queb » en fait environ 3 500.
 
-## 2. Promotion YouTube : le plus rapide pour 1 000 vues
-
-Sur le téléphone, ouvre l’app YouTube, va dans **Toi**, puis **Tes vidéos**. À côté de Pommier d’Alaska, appuie sur **Promouvoir**.
-Sur l’ordinateur, c’est dans YouTube Studio, onglet **Promotions**.
-
-- **Objectif** : « Plus de vues ».
-- **Audience** : choisis-la toi-même. Lieu : Québec, ou Canada. Langue : français. Centres d’intérêt : rap, hip-hop.
-- **Budget** : commence par environ 5 $ par jour pendant 7 jours. YouTube affiche une estimation des vues avant que tu payes : monte le budget jusqu’à voir environ 1 000.
-- Ce sont de vraies personnes. Les vues comptent sur la vidéo et ne posent aucun risque pour la chaîne.
-
-## 3. Shorts : 4 extraits verticaux prêts
+## 2. Shorts : 4 extraits verticaux prêts
 
 Quatre extraits verticaux (1080 × 1920, de 25 à 32 secondes) sont tirés du lyrics visualizer, sans rien ajouter. Les liens sont à la fin de ce fichier.
 
@@ -73,7 +62,7 @@ Pour chaque Short :
 3. Dans **Vidéo associée**, choisis **Pommier d’Alaska**. Un lien vers la vidéo complète s’affiche alors sous le Short. C’est ce qui transforme les vues du Short en vues de la vidéo.
 4. Publie le même extrait en Reel Instagram et sur la page Facebook.
 
-## 4. Sur la vidéo elle-même (5 minutes)
+## 3. Sur la vidéo elle-même (5 minutes)
 
 - **Commentaire épinglé** : écris-le, puis appuie sur les trois points et choisis « Épingler ».
   ```
@@ -83,7 +72,7 @@ Pour chaque Short :
 - **Playlist** : crée la playlist « Kalil d’Orléans – chansons » et mets Pommier d’Alaska en premier, suivi des anciens sons.
 - **Réponds aux 3 commentaires** : chaque réponse compte pour l’algorithme.
 
-## 5. Partages (gratuit)
+## 4. Partages (gratuit)
 
 - **ARAM** : demande-lui de partager la vidéo en story Instagram et de te taguer.
 - **Message aux proches**, à envoyer à 20 personnes :
