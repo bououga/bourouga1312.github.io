@@ -46,9 +46,11 @@ Ce dépôt sert de point commun entre les assistants qui travaillent pour **Kali
 - [ ] Last.fm : coller la biographie (voir `PROFILS.md`).
 - [ ] Discogs : ajouter le CD Évolution (voir `PROFILS.md`).
 - [ ] Wikipédia : brouillon prêt. Admissibilité incertaine : il manque un article de presse centré sur l’artiste.
-- [ ] Presse et booking : brouillons de courriels préparés dans le Gmail de l’artiste. L’artiste les relit et les envoie lui-même.
+- [ ] Presse et booking : brouillons de courriels préparés dans le Gmail de l’artiste (les 9 brouillons radio et presse ont le lien YouTube direct). L’artiste les relit et les envoie lui-même.
+- [ ] YouTube, Pommier d’Alaska : plan dans `YOUTUBE.md` (titre, description et tags ; promotion YouTube ; Shorts reliés ; partages). Le nouveau titre a été envoyé par vidIQ, en attente de la vérification YouTube de l’artiste.
 
 ## Journal
 
 - 2026-10-01/02 (Codex) : création du site sur Neocities, fichiers pour agents IA, WebMCP, crédits, profils YouTube, MusicBrainz et Wikidata (fiche créée).
 - 2026-10-02 (Claude) : copie du site dans `site/` et publication automatique ; fiche Wikidata complétée ; section puis page Presse ; menu ; pages par section, puis regroupées ; lecteur playlist ; nouvelles photos de Mocy ; liens vérifiés vers les artistes et les lieux ; icône du site.
+- 2026-10-02 (Claude) : Pommier d’Alaska placé en tête de /musique (clip et lecteur) ; YOUTUBE.md ; lien YouTube direct dans les brouillons Gmail ; extraits verticaux générés avec vidIQ.
