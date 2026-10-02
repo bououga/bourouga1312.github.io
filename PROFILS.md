@@ -5,35 +5,23 @@ Où on en est après la conversation Codex (état vérifié le 2 octobre 2026).
 | Plateforme | État |
 |---|---|
 | Site officiel | En ligne : https://kalildorleans.neocities.org/ |
-| SoundCloud | Renommé : https://soundcloud.com/kalildorleans |
+| SoundCloud | Renommé : https://soundcloud.com/kalildorleans. Le nom complet du profil est écrit « Kalil D'oréans » : il manque un « l ». |
 | Facebook | Page : https://www.facebook.com/kalildorleans/ |
 | YouTube | Chaîne mise à jour (alias, site, SoundCloud, mots-clés) |
 | MusicBrainz | Fiche « Kalil Mnasri » complétée (alias Kalil d’Orléans, site, liens). Le lien Facebook pointe encore vers l’ancien compte `zoke418`. |
-| Wikidata | Fiche [Q141620965](https://www.wikidata.org/wiki/Q141620965) créée avec nom, description et alias, mais **sans aucune déclaration**. Une fiche vide risque d’être supprimée : voir l’étape 1. |
+| Wikidata | Fiche [Q141620965](https://www.wikidata.org/wiki/Q141620965) complète (11 déclarations). Facebook à ajouter si tu veux (étape 1). |
 | Discogs | Rien n’existe encore pour Évolution (étape 3). |
 | Last.fm | Biographie prête, à coller (étape 4). |
 
-## 1. Wikidata : compléter la fiche (2 minutes)
+## 1. Wikidata : ajouter Facebook (facultatif, 1 minute)
 
-1. Ouvre https://quickstatements.toolforge.org/ et connecte-toi avec ton compte Wikimedia (le même que Wikidata).
-2. Clique sur **New batch**, colle tout le bloc ci-dessous, puis clique sur **Import V1 commands** et **Run**.
+La fiche est complète depuis le 2 octobre 2026 : être humain, rappeur, hip-hop, langue française, nom de scène, site officiel, et tes identifiants MusicBrainz, Spotify, YouTube, SoundCloud et Instagram.
+
+Facebook n’a pas été ajouté, parce que la page n’a pas pu être vérifiée sans connexion. Pour l’ajouter, va sur https://quickstatements.toolforge.org/ (connecté), clique sur **New batch**, colle cette ligne, puis clique sur **Import V1 commands** et **Run** :
 
 ```
-Q141620965	P31	Q5	S854	"https://kalildorleans.neocities.org/"	S813	+2026-10-02T00:00:00Z/11
-Q141620965	P106	Q2252262	S854	"https://kalildorleans.neocities.org/"	S813	+2026-10-02T00:00:00Z/11
-Q141620965	P136	Q11401	S854	"https://kalildorleans.neocities.org/"	S813	+2026-10-02T00:00:00Z/11
-Q141620965	P1412	Q150	S854	"https://kalildorleans.neocities.org/"	S813	+2026-10-02T00:00:00Z/11
-Q141620965	P742	"Kalil d’Orléans"	S854	"https://kalildorleans.neocities.org/"	S813	+2026-10-02T00:00:00Z/11
-Q141620965	P856	"https://kalildorleans.neocities.org/"
-Q141620965	P434	"08aee19a-51e8-474d-a7fa-4ecc6fa401cc"
-Q141620965	P1902	"22ILcGAzCmj77PUDVga7NE"
-Q141620965	P2397	"UCz64rDRbjVK4v3luGJ2cpRw"
-Q141620965	P3040	"kalildorleans"
-Q141620965	P2003	"kalildorleans"
 Q141620965	P2013	"kalildorleans"
 ```
-
-Ce que ça ajoute : être humain, rappeur, hip-hop, langue française, nom de scène, site officiel, et tes identifiants MusicBrainz, Spotify (Kalil Mnasri), YouTube, SoundCloud, Instagram et Facebook.
 
 ## 2. MusicBrainz : corriger le lien Facebook
 
