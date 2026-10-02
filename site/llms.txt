@@ -9,7 +9,12 @@
 - [Labels et curateurs](https://kalildorleans.neocities.org/scout-kit.json) : catalogue, collaborations, sélection musicale, crédits et liens officiels.
 - [Dossier de presse](https://kalildorleans.neocities.org/presse.json) : bio, parcours de Québec à Rimouski, propositions de sujets, morceaux, sources, photos créditées et contact pour une entrevue.
 - [Identité, catalogue et crédits](https://kalildorleans.neocities.org/artist-data.json) : données structurées, provenance et informations non confirmées.
-- [Site officiel](https://kalildorleans.neocities.org/) : biographie, chansons, clips, shows et contact.
+- [Site officiel](https://kalildorleans.neocities.org/) : accueil, accès aux pages ci-dessous.
+- [Nouveautés](https://kalildorleans.neocities.org/nouveautes) : sorties récentes, dont Pommier d’Alaska (2026).
+- [Clips et chansons](https://kalildorleans.neocities.org/musique) : clips, chansons, lecteurs YouTube et crédits.
+- [Bio](https://kalildorleans.neocities.org/bio) : parcours en rap et en slam, de Québec au Bas-Saint-Laurent.
+- [Shows et photos](https://kalildorleans.neocities.org/shows) : historique des spectacles et photos créditées.
+- [Presse et contact](https://kalildorleans.neocities.org/presse) : ressources pour les médias et adresse de contact.
 - [Pommier d’Alaska](https://kalildorleans.neocities.org/pommier-alaska) : lecteur YouTube et crédits.
 - [Liens officiels](https://linktr.ee/kalildorleans) : Linktree de l’artiste.
 
