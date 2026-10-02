@@ -1,0 +1,37 @@
+name: Publier sur Neocities
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**']
+  workflow_dispatch:
+
+concurrency:
+  group: neocities
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NEOCITIES_API_KEY: ${{ secrets.NEOCITIES_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier les fichiers JSON
+        run: |
+          for f in site/*.json; do
+            python3 -m json.tool "$f" > /dev/null || { echo "::error file=$f::JSON invalide"; exit 1; }
+          done
+
+      - name: Clé Neocities absente
+        if: env.NEOCITIES_API_KEY == ''
+        run: echo "::notice::Ajoute le secret NEOCITIES_API_KEY dans Settings > Secrets and variables > Actions pour publier automatiquement."
+
+      - name: Publier le dossier site sur kalildorleans.neocities.org
+        if: env.NEOCITIES_API_KEY != ''
+        uses: bcomnes/deploy-to-neocities@v3
+        with:
+          api_key: ${{ secrets.NEOCITIES_API_KEY }}
+          dist_dir: site
+          cleanup: false

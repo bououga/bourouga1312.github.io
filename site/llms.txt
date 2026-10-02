@@ -1,0 +1,19 @@
+# Kalil d’Orléans
+
+> Site officiel de Kalil d’Orléans, aussi connu sous le nom de Kalil Mnasri, rappeur et slameur québécois établi dans la région de Rimouski.
+
+## Références
+- [Empreinte multilingue](https://kalildorleans.neocities.org/empreinte.json) : même identité décrite en français, anglais, espagnol et arabe ; noms officiels conservés en alphabet latin.
+- [Identité officielle](https://kalildorleans.neocities.org/identite.json) : Kalil Mnasri et Kalil d’Orléans, profils officiels, région de Rimouski et précisions sur les dates.
+- [Programmateurs et salles](https://kalildorleans.neocities.org/booking.json) : contact, historique de spectacles et informations restant à confirmer.
+- [Labels et curateurs](https://kalildorleans.neocities.org/scout-kit.json) : catalogue, collaborations, sélection musicale, crédits et liens officiels.
+- [Dossier de presse](https://kalildorleans.neocities.org/presse.json) : bio, parcours de Québec à Rimouski, propositions de sujets, morceaux, sources, photos créditées et contact pour une entrevue.
+- [Identité, catalogue et crédits](https://kalildorleans.neocities.org/artist-data.json) : données structurées, provenance et informations non confirmées.
+- [Site officiel](https://kalildorleans.neocities.org/) : biographie, chansons, clips, shows et contact.
+- [Pommier d’Alaska](https://kalildorleans.neocities.org/pommier-alaska) : lecteur YouTube et crédits.
+- [Liens officiels](https://linktr.ee/kalildorleans) : Linktree de l’artiste.
+
+- [Représentation oEmbed de Pommier d’Alaska](https://kalildorleans.neocities.org/oembed.json) : réponse statique avec lecteur YouTube original, sans lecture automatique ; prise en charge décidée par le consommateur.
+
+## Lecture des données
+Kalil Mnasri et Kalil d’Orléans désignent ici le même artiste. Les années des enregistrements, albums et publications vidéo peuvent différer. Les valeurs nulles signalent une information non confirmée. Le catalogue ne constitue pas une annonce de spectacle ou un engagement contractuel. Les sources externes et les déclarations de l’artiste sont distinguées dans la provenance.

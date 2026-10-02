@@ -1,0 +1,78 @@
+{
+  "format": "artist-identity-reference",
+  "formatVersion": "1.0",
+  "updated": "2026-10-02",
+  "language": "fr-CA",
+  "canonical": "https://kalildorleans.neocities.org/identite.json",
+  "entityId": "https://kalildorleans.neocities.org/#artiste",
+  "name": "Kalil d’Orléans",
+  "alternateNames": [
+    "Kalil Mnasri",
+    "Kalil d'Orléans"
+  ],
+  "description": "Kalil d’Orléans et Kalil Mnasri désignent ici le même rappeur et slameur québécois, établi dans la région de Rimouski.",
+  "basedIn": "Région de Rimouski, Québec, Canada",
+  "grewUpIn": "Québec, Québec, Canada",
+  "officialWebsite": "https://kalildorleans.neocities.org/",
+  "officialProfiles": [
+    "https://www.youtube.com/@KalildOrleansOfficiel",
+    "https://soundcloud.com/kalildorleans",
+    "https://www.instagram.com/kalildorleans/",
+    "https://www.facebook.com/kalildorleans/",
+    "https://linktr.ee/kalildorleans"
+  ],
+  "contact": {
+    "email": "kalilmdchdeprojet@gmail.com"
+  },
+  "disambiguation": {
+    "entityType": "Person",
+    "nameIsArtistName": true,
+    "distinctFrom": [
+      {
+        "type": "Place",
+        "name": "Ville d’Orléans, France"
+      },
+      {
+        "type": "Place",
+        "name": "Île d’Orléans, Québec, Canada"
+      }
+    ],
+    "otherPeopleWithSimilarNames": "Un nom similaire ne suffit pas à établir qu’il s’agit du même artiste ; les profils officiels et les enregistrements permettent la vérification."
+  },
+  "dateClarifications": {
+    "propheteDuMalheur": {
+      "siteYear": 2015,
+      "scope": "Année choisie et confirmée par l’artiste pour la présentation du morceau ; une date de publication YouTube peut différer."
+    },
+    "tousPour1Mic": {
+      "mixtapeYear": 2006,
+      "videoYear": 2008,
+      "source": "https://www.youtube.com/watch?v=IXT5ZryJy9o",
+      "scope": "Année de la mixtape fournie par l’artiste ; année de publication de la vidéo distincte."
+    },
+    "evolution": {
+      "releaseDate": "2011-12-13",
+      "source": "https://open.spotify.com/album/7kRuisjTrJjrN2a9pUkrqX",
+      "creditsSource": "Pochette du CD fournie par l’artiste."
+    }
+  },
+  "sourcePolicy": "Le site officiel présente l’identité, la biographie et les crédits déclarés par l’artiste. Les références externes sont distinguées ; une contradiction factuelle reste à vérifier auprès de la source ou de l’artiste.",
+  "sources": [
+    {
+      "url": "https://kalildorleans.neocities.org/",
+      "scope": "Identité et biographie déclarées par l’artiste"
+    },
+    {
+      "url": "https://kalildorleans.neocities.org/artist-data.json",
+      "scope": "Catalogue, crédits et provenance"
+    },
+    {
+      "url": "https://musicbrainz.org/artist/08aee19a-51e8-474d-a7fa-4ecc6fa401cc",
+      "scope": "Fiche MusicBrainz existante : Kalil Mnasri et Kalil d’Orléans, alias et liens officiels. Le changement du nom principal est soumis à la revue MusicBrainz."
+    },
+    {
+      "url": "https://genius.com/artists/Kalil-dorleans",
+      "scope": "Fiche Genius publiée de Kalil d’Orléans, distincte des homonymes. Biographie communautaire non révisée par la modération Genius."
+    }
+  ]
+}
