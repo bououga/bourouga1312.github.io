@@ -136,7 +136,10 @@
 }</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap">
-<style>*{box-sizing:border-box}body{margin:0;background:#0d0d0d;color:#f4f3f0;font-family:Montserrat,Arial,sans-serif;line-height:1.75}main{max-width:1080px;margin:auto;padding:30px 20px 60px}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:2px solid currentColor;outline-offset:4px}h1{font-size:clamp(30px,6vw,60px);line-height:1.1;margin:28px 0 12px;font-weight:800}p{margin:12px 0}.artist{color:#b1aea7;margin-bottom:24px}iframe{display:block;border:0;width:100%;aspect-ratio:16/9;height:auto;background:#000}.credits{margin:26px 0}.credits p{margin:6px 0}footer{margin-top:35px;border-top:1px solid #393733;padding-top:18px;font-size:14px}</style>
+<style>*{box-sizing:border-box}body{margin:0;background:#0d0d0d;color:#f4f3f0;font-family:Montserrat,Arial,sans-serif;line-height:1.75}main{max-width:1080px;margin:auto;padding:30px 20px 60px}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:2px solid currentColor;outline-offset:4px}h1{font-size:clamp(30px,6vw,60px);line-height:1.1;margin:28px 0 12px;font-weight:800}p{margin:12px 0}.artist{color:#b1aea7;margin-bottom:24px}iframe{display:block;border:0;width:100%;aspect-ratio:16/9;height:auto;background:#000}.credits{margin:26px 0}.credits p{margin:6px 0}footer{margin-top:35px;border-top:1px solid #393733;padding-top:18px;font-size:14px}
+html{scroll-behavior:smooth}.top .wrap{position:relative}.menu{position:absolute;top:18px;right:20px;z-index:20}.menu summary{list-style:none;cursor:pointer;width:46px;height:46px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 11px;border:1px solid rgba(244,243,240,.35);color:var(--on-night)}.menu summary::-webkit-details-marker{display:none}.menu summary span{display:block;height:2px;background:currentColor}.menu summary:hover{background:var(--on-night);color:var(--night)}.menu nav{position:absolute;right:0;top:54px;min-width:230px;background:var(--night-2);border:1px solid rgba(244,243,240,.16);display:flex;flex-direction:column}.menu nav a{color:var(--on-night);text-decoration:none;font-weight:600;font-size:15px;padding:12px 18px;border-top:1px solid rgba(244,243,240,.08)}.menu nav a:first-child{border-top:0}.menu nav a:hover{background:var(--on-night);color:var(--night)}
+.menu{--night:#0d0d0d;--night-2:#191919;--on-night:#f4f3f0}
+</style>
 <link rel="alternate" type="application/json" href="/presse.json" title="Dossier de presse de Kalil d’Orléans">
 <link rel="alternate" type="application/json" href="/identite.json" title="Identité officielle de Kalil d’Orléans">
 <link rel="alternate" type="application/json" href="/booking.json" title="Informations pour programmateurs et salles">
@@ -146,11 +149,11 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-</head><body><main><a href="/">← Kalil d’Orléans</a><h1>Pommier d’Alaska</h1><p class="artist">Kalil d’Orléans · 2026</p>
+</head><body><main><details class="menu"><summary aria-label="Menu"><span></span><span></span><span></span></summary><nav aria-label="Sections"><a href="/">Accueil</a><a href="/nouveautes">Nouveautés</a><a href="/musique">Clips et chansons</a><a href="/bio">Bio</a><a href="/shows">Shows et photos</a><a href="/presse">Presse et contact</a></nav></details><a href="/">← Kalil d’Orléans</a><h1>Pommier d’Alaska</h1><p class="artist">Kalil d’Orléans · 2026</p>
 <iframe src="https://www.youtube.com/embed/OnxQtO7Ki1U?playsinline=1&amp;rel=0" title="Pommier d’Alaska — lecteur YouTube" width="560" height="315" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <p><a href="https://www.youtube.com/watch?v=OnxQtO7Ki1U">Ouvrir sur YouTube</a></p>
 <div class="credits"><strong>Crédits</strong><p>Composition et interprétation : Kalil d’Orléans</p><p>Instru : <a href="https://www.instagram.com/prodaram/" aria-label="ARAM sur Instagram">ARAM</a>, beatmaker</p><p>Enregistrement et mix : Kalil d’Orléans</p></div>
-<footer><a href="/#chansons">Chansons</a> · <a href="/#clips">Clips</a> · <a href="/#bio">Bio</a></footer></main><script id="kalil-webmcp">
+<footer><a href="/#chansons">Chansons</a> · <a href="/#clips">Clips</a> · <a href="/#bio">Bio</a></footer></main><script>document.querySelectorAll(".menu nav a").forEach(function(a){a.addEventListener("click",function(){a.closest("details").removeAttribute("open")})})</script><script id="kalil-webmcp">
 (function () {
   'use strict';
   // Read-only progressive enhancement; no visible changes or network requests.
