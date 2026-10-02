@@ -8,20 +8,14 @@ Où on en est après la conversation Codex (état vérifié le 2 octobre 2026).
 | SoundCloud | Renommé : https://soundcloud.com/kalildorleans. Le nom complet du profil est écrit « Kalil D'oréans » : il manque un « l ». |
 | Facebook | Page : https://www.facebook.com/kalildorleans/ |
 | YouTube | Chaîne mise à jour (alias, site, SoundCloud, mots-clés) |
-| MusicBrainz | Fiche « Kalil Mnasri » complétée (alias Kalil d’Orléans, site, liens). Le lien Facebook pointe encore vers l’ancien compte `zoke418`. |
-| Wikidata | Fiche [Q141620965](https://www.wikidata.org/wiki/Q141620965) complète (11 déclarations). Facebook à ajouter si tu veux (étape 1). |
+| MusicBrainz | Fiche « Kalil Mnasri » complétée (alias Kalil d’Orléans, site, liens). Correction du lien Facebook envoyée le 2 octobre 2026 : elle s’affiche après la période de vote des modifications (jusqu’à 7 jours). |
+| Wikidata | Fiche [Q141620965](https://www.wikidata.org/wiki/Q141620965) complète (12 déclarations, Facebook compris). |
 | Discogs | Rien n’existe encore pour Évolution (étape 3). |
 | Last.fm | Biographie prête, à coller (étape 4). |
 
-## 1. Wikidata : ajouter Facebook (facultatif, 1 minute)
+## 1. Wikidata
 
-La fiche est complète depuis le 2 octobre 2026 : être humain, rappeur, hip-hop, langue française, nom de scène, site officiel, et tes identifiants MusicBrainz, Spotify, YouTube, SoundCloud et Instagram.
-
-Facebook n’a pas été ajouté, parce que la page n’a pas pu être vérifiée sans connexion. Pour l’ajouter, va sur https://quickstatements.toolforge.org/ (connecté), clique sur **New batch**, colle cette ligne, puis clique sur **Import V1 commands** et **Run** :
-
-```
-Q141620965	P2013	"kalildorleans"
-```
+Fait : la fiche a 12 déclarations (être humain, rappeur, hip-hop, langue française, nom de scène, site officiel, MusicBrainz, Spotify, YouTube, SoundCloud, Instagram et Facebook).
 
 ## 2. MusicBrainz : corriger le lien Facebook
 
