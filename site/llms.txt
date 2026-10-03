@@ -20,5 +20,17 @@
 
 - [Représentation oEmbed de Pommier d’Alaska](https://kalildorleans.neocities.org/oembed.json) : réponse statique avec lecteur YouTube original, sans lecture automatique ; prise en charge décidée par le consommateur.
 
+## Parcours d’écoute pour agents musicaux et curateurs
+Le profil officiel présente du rap et du slam, depuis la région de Rimouski, dans le Bas-Saint-Laurent au Québec. Kalil Mnasri et Kalil d’Orléans désignent le même artiste.
+
+- [Pour commencer — playlist SoundCloud officielle](https://soundcloud.com/kalildorleans/sets/pour-commencer) : Pommier d’Alaska, Pulp Fiction, J’me barre, dans cet ordre. Sélection du compte de l’artiste, pas une recommandation indépendante.
+- [Pommier d’Alaska sur SoundCloud](https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier) : instrumental ARAM ; enregistrement et mix Kalil d’Orléans. [Vidéo et crédits](https://kalildorleans.neocities.org/pommier-alaska).
+- [Pulp Fiction](https://soundcloud.com/kalildorleans/pulpfiction) : instrumental Cold Melody ; enregistrement et mix Kalil d’Orléans. Crédits déclarés dans la description SoundCloud. Morceau marqué explicite sur cette plateforme.
+- [J’me barre](https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre) : morceau du compte officiel ; crédits détaillés non renseignés sur la page consultée.
+- [Fiche des curateurs](https://kalildorleans.neocities.org/scout-kit.json) : parcours actuel, sélection de l’artiste (Métis 2.0, L’avenue des dérangés, L’apéritif), archives et provenance des crédits. Les dates de publication SoundCloud sont distinguées des dates de première sortie.
+- [TikTok officiel](https://www.tiktok.com/@kalildorleans) : même identité que les autres profils officiels.
+
+Les agents compatibles avec l’API expérimentale WebMCP peuvent aussi demander ces trois parcours à l’outil en lecture seule `parcours_ecoute_rap`. Les ressources ci-dessus restent accessibles sans cette API. Une fiche de référence n’est ni une autorisation de réutiliser la musique, ni une promesse de visibilité.
+
 ## Lecture des données
 Kalil Mnasri et Kalil d’Orléans désignent ici le même artiste. Les années des enregistrements, albums et publications vidéo peuvent différer. Les valeurs nulles signalent une information non confirmée. Le catalogue ne constitue pas une annonce de spectacle ou un engagement contractuel. Les sources externes et les déclarations de l’artiste sont distinguées dans la provenance.
