@@ -7,6 +7,7 @@ Ce dépôt sert de point commun entre les assistants qui travaillent pour **Kali
 - Site officiel : https://kalildorleans.neocities.org/
 - Source : dossier `site/`. Toute modification de `site/` fusionnée sur `main` est publiée automatiquement sur Neocities par `.github/workflows/neocities.yml` (secret `NEOCITIES_API_KEY` déjà configuré).
 - Méthode : une branche, une pull request, vérification du rendu, puis fusion.
+- **Neocities se met à jour seulement par l’action GitHub.** Ne jamais téléverser de fichiers directement sur Neocities : la publication suivante les écrase. Le 3 octobre 2026, les versions téléversées à la main (accueil, bio, presse, pommier-alaska) ont été reprises dans `site/`.
 - La racine du dépôt (`index.html` « Ferre × Rosalux ») est une autre page GitHub Pages. Ne pas y toucher.
 
 ## Règles de l’artiste (à respecter sans exception)
@@ -56,5 +57,6 @@ Ce dépôt sert de point commun entre les assistants qui travaillent pour **Kali
 - 2026-10-01/02 (Codex) : création du site sur Neocities, fichiers pour agents IA, WebMCP, crédits, profils YouTube, MusicBrainz et Wikidata (fiche créée).
 - 2026-10-02 (Claude) : copie du site dans `site/` et publication automatique ; fiche Wikidata complétée ; section puis page Presse ; menu ; pages par section, puis regroupées ; lecteur playlist ; nouvelles photos de Mocy ; liens vérifiés vers les artistes et les lieux ; icône du site.
 - 2026-10-02 (Claude) : Pommier d’Alaska placé en tête de /musique (clip et lecteur) ; YOUTUBE.md ; lien YouTube direct dans les brouillons Gmail ; extraits verticaux générés avec vidIQ.
-- 2026-10-02 (Claude) : l’artiste refuse toute pub payée et ne veut pas qu’on sollicite ses proches. Deux courriels sont partis par erreur, sans son accord : ONZ MTL (hello@onzmtl.com) et Rad (info@rad.ca). L’artiste a finalement décidé de les laisser et d’attendre une réponse (ils sont de nouveau dans ses envoyés). Ne pas relancer ces deux contacts sans son accord. Règle 8 ajoutée.
+- 2026-10-02 (Claude) : l’artiste refuse toute pub payée et ne veut pas qu’on sollicite ses proches. Deux courriels sont partis le 2 octobre (ONZ MTL et Rad, lien de la vidéo) ; ne pas les relancer sans son accord. Règle 8 ajoutée.
 - 2026-10-02 (Claude) : titre, description et tags de Pommier d’Alaska appliqués avec vidIQ. `CE-SOIR.md` liste les endroits publics vérifiés (Reddit, Discord, YouTube) avec les textes à coller ; c’est l’artiste qui publie.
+- 2026-10-03 (Claude) : vérification des 20 points (confidentialité, sécurité, référencement, images, vitesse, contraste, cellulaire, 404, liens). Ajouts : `confidentialite.html`, `not_found.html` (page 404 de Neocities), copies d’images `-1600` (les originaux restent pour la presse), vidéos YouTube sans témoins (`youtube-nocookie.com`, API chargée seulement au clic sur /musique), liens slamcap en https. Bogue d’affichage corrigé : les liens des crédits sous les clips prenaient le style des lignes de titre (`.tracks p a`).

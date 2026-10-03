@@ -15,7 +15,8 @@
       "https://soundcloud.com/kalildorleans",
       "https://www.instagram.com/kalildorleans/",
       "https://www.facebook.com/kalildorleans/",
-      "https://linktr.ee/kalildorleans"
+      "https://linktr.ee/kalildorleans",
+      "https://www.tiktok.com/@kalildorleans"
     ],
     "region": "Région de Rimouski, Québec, Canada",
     "activities": [
@@ -49,10 +50,16 @@
       },
       "sameAs": "https://www.youtube.com/watch?v=OnxQtO7Ki1U",
       "creditText": "Instru : ARAM. Enregistrement et mix : Kalil d’Orléans.",
-      "potentialAction": {
-        "@type": "ListenAction",
-        "target": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
-      },
+      "potentialAction": [
+        {
+          "@type": "ListenAction",
+          "target": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
+        },
+        {
+          "@type": "ListenAction",
+          "target": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier"
+        }
+      ],
       "contributor": [
         {
           "@type": "Role",
@@ -464,6 +471,68 @@
         "@type": "ListenAction",
         "target": "https://www.youtube.com/watch?v=4a4kuwoJ4yE"
       }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://kalildorleans.neocities.org/#enregistrement-pulp-fiction",
+      "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+      "name": "Pulp Fiction",
+      "byArtist": {
+        "@id": "https://kalildorleans.neocities.org/#artiste"
+      },
+      "duration": "PT1M24S",
+      "creditText": "Instrumental : Cold Melody. Enregistrement et mix : Kalil d’Orléans.",
+      "potentialAction": {
+        "@type": "ListenAction",
+        "target": "https://soundcloud.com/kalildorleans/pulpfiction"
+      },
+      "platformPublication": {
+        "platform": "SoundCloud",
+        "date": "2026-09-20"
+      },
+      "sourceIds": [
+        "soundcloud-pulpfiction"
+      ],
+      "contributor": [
+        {
+          "@type": "Role",
+          "roleName": "Instrumental",
+          "contributor": {
+            "@type": "Person",
+            "name": "Cold Melody",
+            "sameAs": "https://www.instagram.com/coldm_beatz/"
+          }
+        },
+        {
+          "@type": "Role",
+          "roleName": "Enregistrement et mix",
+          "contributor": {
+            "@id": "https://kalildorleans.neocities.org/#artiste"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://kalildorleans.neocities.org/#enregistrement-jme-barre",
+      "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+      "name": "J’me barre",
+      "byArtist": {
+        "@id": "https://kalildorleans.neocities.org/#artiste"
+      },
+      "duration": "PT2M41S",
+      "creditText": null,
+      "potentialAction": {
+        "@type": "ListenAction",
+        "target": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre"
+      },
+      "platformPublication": {
+        "platform": "SoundCloud",
+        "date": "2026-07-16"
+      },
+      "sourceIds": [
+        "soundcloud-jmebarre"
+      ]
     }
   ],
   "provenance": {
@@ -497,6 +566,29 @@
       },
       "source": "https://lacarottepolaire.bandcamp.com/album/les-coeurs-m-tamorphes-remastered",
       "scope": "La page de Les Coeurs Métamorphes (Remastered) contient Reviens-moi (avec Kalil Mnasri), et crédite Kalil Mnasri au rap. Les crédits d’album indiquent musique et paroles : Claudia Laurin ; prise de son et mixage : Armando Di Stefano. La page affiche le 20 janvier 2017. Ces crédits concernent cet album remasterisé ; ils ne prouvent pas à eux seuls les crédits de la version YouTube liée sur le site."
+    },
+    "soundcloud": {
+      "checked": "2026-10-02",
+      "sources": [
+        {
+          "id": "soundcloud-discovery",
+          "url": "https://soundcloud.com/kalildorleans/sets/pour-commencer",
+          "type": "Playlist publique du compte officiel de l’artiste",
+          "scope": "Ordre de la playlist vérifié le 2 octobre 2026 : Pommier d’Alaska, Pulp Fiction, J’me barre. Cette playlist de l’artiste ne constitue pas une sélection indépendante."
+        },
+        {
+          "id": "soundcloud-pulpfiction",
+          "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+          "type": "Page publique du morceau sur le compte officiel SoundCloud",
+          "scope": "Page consultée le 2 octobre 2026. Description : enregistrement et mix par Kalil d’Orléans, instrumental de Cold Melody, lien Instagram coldm_beatz. Durée affichée : 1:24. Marqué explicite et Hip-hop & Rap. La date du 20 septembre 2026 concerne la publication SoundCloud, pas une première sortie démontrée."
+        },
+        {
+          "id": "soundcloud-jmebarre",
+          "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+          "type": "Page publique du morceau sur le compte officiel SoundCloud",
+          "scope": "Page consultée le 2 octobre 2026. Durée affichée : 2:41. Date affichée : 16 juillet 2026, publication SoundCloud. La page ne fournit pas de crédits détaillés."
+        }
+      ]
     }
   },
   "unknown": {
@@ -1249,7 +1341,7 @@
   },
   "curators": {
     "format": "artist-curator-reference",
-    "formatVersion": "1.0",
+    "formatVersion": "1.1",
     "updated": "2026-10-02",
     "language": "fr-CA",
     "canonical": "https://kalildorleans.neocities.org/scout-kit.json",
@@ -1276,7 +1368,8 @@
         "https://soundcloud.com/kalildorleans",
         "https://www.instagram.com/kalildorleans/",
         "https://www.facebook.com/kalildorleans/",
-        "https://linktr.ee/kalildorleans"
+        "https://linktr.ee/kalildorleans",
+        "https://www.tiktok.com/@kalildorleans"
       ],
       "sourceIds": [
         "artist-site"
@@ -1305,6 +1398,16 @@
           "name": "ARAM",
           "role": "Instrumental",
           "url": "https://www.instagram.com/prodaram/"
+        }
+      ],
+      "listeningLinks": [
+        {
+          "platform": "YouTube",
+          "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
+        },
+        {
+          "platform": "SoundCloud",
+          "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier"
         }
       ]
     },
@@ -1354,7 +1457,17 @@
         "year": 2026,
         "credits": "Instru : ARAM. Enregistrement et mix : Kalil d’Orléans.",
         "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
-        "yearScope": "Année indiquée dans la section « Nouveauté » du site."
+        "yearScope": "Année indiquée dans la section « Nouveauté » du site.",
+        "listeningLinks": [
+          {
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
+          },
+          {
+            "platform": "SoundCloud",
+            "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier"
+          }
+        ]
       },
       {
         "title": "Le chat et la souris · Magic Color Band",
@@ -1490,6 +1603,52 @@
         "credits": "Crédits — Regarde le monde Interprétation : Kalil Mnasri, Psycadélick et Sach Studio : Essentiel Productions",
         "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
         "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+      },
+      {
+        "title": "Pulp Fiction",
+        "type": "chanson",
+        "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+        "siteUrl": null,
+        "year": 2026,
+        "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+        "platformPublication": {
+          "platform": "SoundCloud",
+          "date": "2026-09-20"
+        },
+        "duration": "PT1M24S",
+        "explicit": true,
+        "platformGenre": "Hip-hop & Rap",
+        "credits": "Instrumental : Cold Melody. Enregistrement et mix : Kalil d’Orléans.",
+        "contributorProfiles": [
+          {
+            "name": "Cold Melody",
+            "role": "Instrumental",
+            "url": "https://www.instagram.com/coldm_beatz/"
+          }
+        ],
+        "sourceIds": [
+          "soundcloud-pulpfiction"
+        ],
+        "provenance": "Informations affichées publiquement par l’artiste sur la page SoundCloud du morceau ; aucune analyse audio automatique."
+      },
+      {
+        "title": "J’me barre",
+        "type": "chanson",
+        "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+        "siteUrl": null,
+        "year": 2026,
+        "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+        "platformPublication": {
+          "platform": "SoundCloud",
+          "date": "2026-07-16"
+        },
+        "duration": "PT2M41S",
+        "explicit": null,
+        "credits": null,
+        "sourceIds": [
+          "soundcloud-jmebarre"
+        ],
+        "provenance": "Titre, artiste, durée et date affichés sur SoundCloud. Crédits détaillés non renseignés sur la page consultée."
       }
     ],
     "album": {
@@ -1734,6 +1893,14 @@
             "role": "Beats 4 et 12"
           }
         ]
+      },
+      {
+        "name": "Cold Melody",
+        "role": "Instrumental de Pulp Fiction",
+        "url": "https://www.instagram.com/coldm_beatz/",
+        "sourceIds": [
+          "soundcloud-pulpfiction"
+        ]
       }
     ],
     "collaborationProvenance": "Noms et rôles tirés des crédits du catalogue et de la pochette fournis par l’artiste ; aucune relation actuelle ou représentation n’en est déduite. Le catalogue officiel reste la référence pour les crédits complets.",
@@ -1807,8 +1974,315 @@
           "url": "https://kalildorleans.neocities.org/#photos",
           "type": "Légendes et contexte fournis par l’artiste",
           "scope": "Photos Mocy : mars 2026, Brasserie Messorem, Montréal. Les autorisations de réutilisation restent à confirmer."
+        },
+        {
+          "id": "soundcloud-discovery",
+          "url": "https://soundcloud.com/kalildorleans/sets/pour-commencer",
+          "type": "Playlist publique du compte officiel de l’artiste",
+          "scope": "Ordre de la playlist vérifié le 2 octobre 2026 : Pommier d’Alaska, Pulp Fiction, J’me barre. Cette playlist de l’artiste ne constitue pas une sélection indépendante."
+        },
+        {
+          "id": "soundcloud-pulpfiction",
+          "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+          "type": "Page publique du morceau sur le compte officiel SoundCloud",
+          "scope": "Page consultée le 2 octobre 2026. Description : enregistrement et mix par Kalil d’Orléans, instrumental de Cold Melody, lien Instagram coldm_beatz. Durée affichée : 1:24. Marqué explicite et Hip-hop & Rap. La date du 20 septembre 2026 concerne la publication SoundCloud, pas une première sortie démontrée."
+        },
+        {
+          "id": "soundcloud-jmebarre",
+          "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+          "type": "Page publique du morceau sur le compte officiel SoundCloud",
+          "scope": "Page consultée le 2 octobre 2026. Durée affichée : 2:41. Date affichée : 16 juillet 2026, publication SoundCloud. La page ne fournit pas de crédits détaillés."
         }
       ]
+    },
+    "discoveryProfile": {
+      "artist": "Kalil d’Orléans",
+      "entityId": "https://kalildorleans.neocities.org/#artiste",
+      "alsoKnownAs": [
+        "Kalil Mnasri"
+      ],
+      "activities": [
+        "Rap",
+        "Slam"
+      ],
+      "languageOfReference": "fr-CA",
+      "basedIn": {
+        "name": "Région de Rimouski",
+        "province": "Québec",
+        "country": "Canada"
+      },
+      "region": "Bas-Saint-Laurent, Québec, Canada",
+      "grewUpIn": "Québec, Québec, Canada",
+      "officialWebsite": "https://kalildorleans.neocities.org/",
+      "sourceIds": [
+        "artist-site"
+      ],
+      "audioAnalysis": null,
+      "note": "Le lieu et les activités viennent de la présentation officielle de l’artiste. Aucun BPM, tonalité, sous-genre ou score de popularité n’est déduit sans analyse ou confirmation."
+    },
+    "listeningPaths": {
+      "actuel": {
+        "label": "Trois chansons actuelles pour commencer",
+        "playlistUrl": "https://soundcloud.com/kalildorleans/sets/pour-commencer",
+        "sourceIds": [
+          "soundcloud-discovery"
+        ],
+        "context": "Ordre de la playlist publiée par l’artiste sur son compte SoundCloud.",
+        "recordings": [
+          {
+            "title": "Pommier d’Alaska",
+            "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier",
+            "siteUrl": "https://kalildorleans.neocities.org/pommier-alaska",
+            "credits": "Instru : ARAM. Enregistrement et mix : Kalil d’Orléans.",
+            "sourceIds": [
+              "artist-site",
+              "artist-credits"
+            ],
+            "year": 2026,
+            "contributorProfiles": [
+              {
+                "name": "ARAM",
+                "role": "Instrumental",
+                "url": "https://www.instagram.com/prodaram/"
+              }
+            ],
+            "listeningLinks": [
+              {
+                "platform": "YouTube",
+                "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
+              },
+              {
+                "platform": "SoundCloud",
+                "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier"
+              }
+            ]
+          },
+          {
+            "title": "Pulp Fiction",
+            "type": "chanson",
+            "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+            "siteUrl": null,
+            "year": 2026,
+            "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+            "platformPublication": {
+              "platform": "SoundCloud",
+              "date": "2026-09-20"
+            },
+            "duration": "PT1M24S",
+            "explicit": true,
+            "platformGenre": "Hip-hop & Rap",
+            "credits": "Instrumental : Cold Melody. Enregistrement et mix : Kalil d’Orléans.",
+            "contributorProfiles": [
+              {
+                "name": "Cold Melody",
+                "role": "Instrumental",
+                "url": "https://www.instagram.com/coldm_beatz/"
+              }
+            ],
+            "sourceIds": [
+              "soundcloud-pulpfiction"
+            ],
+            "provenance": "Informations affichées publiquement par l’artiste sur la page SoundCloud du morceau ; aucune analyse audio automatique."
+          },
+          {
+            "title": "J’me barre",
+            "type": "chanson",
+            "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+            "siteUrl": null,
+            "year": 2026,
+            "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+            "platformPublication": {
+              "platform": "SoundCloud",
+              "date": "2026-07-16"
+            },
+            "duration": "PT2M41S",
+            "explicit": null,
+            "credits": null,
+            "sourceIds": [
+              "soundcloud-jmebarre"
+            ],
+            "provenance": "Titre, artiste, durée et date affichés sur SoundCloud. Crédits détaillés non renseignés sur la page consultée."
+          }
+        ]
+      },
+      "selection_artiste": {
+        "context": "Trois morceaux choisis par l’artiste pour présenter son univers, en complément de Pommier d’Alaska.",
+        "recordings": [
+          {
+            "title": "Métis 2.0",
+            "url": "https://www.youtube.com/watch?v=-3fVTkgOYCY",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau--3fVTkgOYCY",
+            "credits": "Crédits — Métis 2.0 Paroles : Kalil Mnasri Musique : Max Ruest Vidéo : Jean-Gabriel Morin Motion design : KJT",
+            "sourceIds": [
+              "artist-site",
+              "artist-credits"
+            ],
+            "year": 2020
+          },
+          {
+            "title": "L’avenue des dérangés",
+            "url": "https://www.youtube.com/watch?v=hxeC1tr2ru4",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-hxeC1tr2ru4",
+            "credits": "Crédits — L’avenue des dérangés Instrumental : Street Scientist Beat Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+            "sourceIds": [
+              "artist-site",
+              "artist-credits"
+            ]
+          },
+          {
+            "title": "L’apéritif",
+            "url": "https://www.youtube.com/watch?v=L1LzwDFBq1g",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-L1LzwDFBq1g",
+            "credits": "Crédits — L’apéritif Album : Évolution · 2011 Beat : Dave Psycadelick Huot Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+            "sourceIds": [
+              "artist-site",
+              "artist-credits"
+            ],
+            "year": 2011
+          }
+        ]
+      },
+      "archives": {
+        "label": "Clips et chansons des archives",
+        "siteUrl": "https://kalildorleans.neocities.org/musique",
+        "recordings": [
+          {
+            "title": "Le chat et la souris · Magic Color Band",
+            "type": "clip",
+            "url": "https://www.youtube.com/watch?v=S_XxaIPGvtU",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-S_XxaIPGvtU",
+            "year": 2014,
+            "credits": "Crédits — Le chat et la souris Magic Color Band feat. Kalil Mnasri · 2014 Musique : Patrice Martineau Vidéo : Cris Clay",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "Métis 2.0",
+            "type": "clip",
+            "url": "https://www.youtube.com/watch?v=-3fVTkgOYCY",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau--3fVTkgOYCY",
+            "year": 2020,
+            "credits": "Crédits — Métis 2.0 Paroles : Kalil Mnasri Musique : Max Ruest Vidéo : Jean-Gabriel Morin Motion design : KJT",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "Québec d’aujourd’hui · Jul-High",
+            "type": "clip",
+            "url": "https://www.youtube.com/watch?v=l__xJh3Q3wc",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-l__xJh3Q3wc",
+            "year": 2011,
+            "credits": "Crédits — Québec d’aujourd’hui — live Interprétation : Kalil Mnasri et Jul-High Live à La Ninkasi · 2011 Vidéo publiée par Jul-High",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "Tous pour 1 mic",
+            "type": "clip",
+            "url": "https://www.youtube.com/watch?v=IXT5ZryJy9o",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-IXT5ZryJy9o",
+            "year": 2008,
+            "credits": "Crédits — Tous pour 1 mic Sach feat. Tp1 (Kalil Mnasri, Ugo, Fléau Le Ouf et Proulx) Extrait du mixtape de Psycadelick (2006) Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions Beat : Street Scientist Beat (Sach)",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année de publication de la vidéo, distincte de l’année du mixtape.",
+            "mixtapeYear": 2006,
+            "mixtapeYearProvenance": "Année fournie par l’artiste."
+          },
+          {
+            "title": "Reviens-moi · La Carotte Polaire",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=KBQ3pQAgHak",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-KBQ3pQAgHak",
+            "year": 2017,
+            "credits": "Crédits — Reviens-moi Interprétation : La Carotte Polaire avec Kalil Mnasri",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "Prophète du malheur",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=iCHuDUD88Nk",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-iCHuDUD88Nk",
+            "year": 2015,
+            "credits": "Crédits — Prophète du malheur Composition et interprétation : Kalil Mnasri Studio : Essentiel Productions",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "2015 retenu explicitement par l’artiste pour le site ; ne doit pas être remplacé par la date de publication YouTube (2014)."
+          },
+          {
+            "title": "Métis",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=XHPv52KUy20",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-XHPv52KUy20",
+            "year": 2014,
+            "credits": "Crédits — Métis Interprétation : Kalil Mnasri Instrumental : Patrice Martineau Enregistrement : Patrice Martineau",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "Histoires · Feuilles et Racines",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=tbXD7FJuSYY",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-tbXD7FJuSYY",
+            "year": 2011,
+            "credits": "Crédits — Histoires Avec Feuilles et Racines Album : Évolution · 2011 Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Prod.",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "album": "Évolution",
+            "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+          },
+          {
+            "title": "R(évolution)",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=qjMUkAKThsg",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-qjMUkAKThsg",
+            "year": 2011,
+            "credits": "Crédits — R(évolution) Album : Évolution · 2011 Beat : Sacha Boulet Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Prod.",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "album": "Évolution",
+            "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+          },
+          {
+            "title": "On rêve · Jul-High",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=kcNkXbHPa-g",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-kcNkXbHPa-g",
+            "year": 2011,
+            "credits": "Crédits — On rêve Interprétation : Jul-High avec Kalil Mnasri Studio : Essentiel Productions",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          },
+          {
+            "title": "L’avenue des dérangés",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=hxeC1tr2ru4",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-hxeC1tr2ru4",
+            "year": null,
+            "credits": "Crédits — L’avenue des dérangés Instrumental : Street Scientist Beat Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année de sortie non confirmée ; le site affiche « Essentiel », qui n’est pas une date."
+          },
+          {
+            "title": "L’apéritif",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=L1LzwDFBq1g",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-L1LzwDFBq1g",
+            "year": 2011,
+            "credits": "Crédits — L’apéritif Album : Évolution · 2011 Beat : Dave Psycadelick Huot Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "album": "Évolution",
+            "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+          },
+          {
+            "title": "Regarde le monde",
+            "type": "chanson",
+            "url": "https://www.youtube.com/watch?v=4a4kuwoJ4yE",
+            "siteUrl": "https://kalildorleans.neocities.org/#morceau-4a4kuwoJ4yE",
+            "year": 2008,
+            "credits": "Crédits — Regarde le monde Interprétation : Kalil Mnasri, Psycadélick et Sach Studio : Essentiel Productions",
+            "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+            "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+          }
+        ]
+      }
     }
   },
   "identification": {
@@ -1832,7 +2306,8 @@
       "https://soundcloud.com/kalildorleans",
       "https://www.instagram.com/kalildorleans/",
       "https://www.facebook.com/kalildorleans/",
-      "https://linktr.ee/kalildorleans"
+      "https://linktr.ee/kalildorleans",
+      "https://www.tiktok.com/@kalildorleans"
     ],
     "contact": {
       "email": "kalilmdchdeprojet@gmail.com"
@@ -2019,9 +2494,299 @@
     "booking": "https://kalildorleans.neocities.org/booking.json",
     "curators": "https://kalildorleans.neocities.org/scout-kit.json",
     "multilingual": "https://kalildorleans.neocities.org/empreinte.json",
-    "catalogue": "https://kalildorleans.neocities.org/",
+    "catalogue": "https://kalildorleans.neocities.org/artist-data.json",
     "musicBrainz": "https://musicbrainz.org/artist/08aee19a-51e8-474d-a7fa-4ecc6fa401cc",
     "geniusArtist": "https://genius.com/artists/Kalil-dorleans",
-    "geniusPommier": "https://genius.com/Kalil-dorleans-pommier-dalaska-lyrics"
+    "geniusPommier": "https://genius.com/Kalil-dorleans-pommier-dalaska-lyrics",
+    "discoveryPlaylist": "https://soundcloud.com/kalildorleans/sets/pour-commencer"
+  },
+  "discoveryProfile": {
+    "artist": "Kalil d’Orléans",
+    "entityId": "https://kalildorleans.neocities.org/#artiste",
+    "alsoKnownAs": [
+      "Kalil Mnasri"
+    ],
+    "activities": [
+      "Rap",
+      "Slam"
+    ],
+    "languageOfReference": "fr-CA",
+    "basedIn": {
+      "name": "Région de Rimouski",
+      "province": "Québec",
+      "country": "Canada"
+    },
+    "region": "Bas-Saint-Laurent, Québec, Canada",
+    "grewUpIn": "Québec, Québec, Canada",
+    "officialWebsite": "https://kalildorleans.neocities.org/",
+    "sourceIds": [
+      "artist-site"
+    ],
+    "audioAnalysis": null,
+    "note": "Le lieu et les activités viennent de la présentation officielle de l’artiste. Aucun BPM, tonalité, sous-genre ou score de popularité n’est déduit sans analyse ou confirmation."
+  },
+  "listeningPaths": {
+    "actuel": {
+      "label": "Trois chansons actuelles pour commencer",
+      "playlistUrl": "https://soundcloud.com/kalildorleans/sets/pour-commencer",
+      "sourceIds": [
+        "soundcloud-discovery"
+      ],
+      "context": "Ordre de la playlist publiée par l’artiste sur son compte SoundCloud.",
+      "recordings": [
+        {
+          "title": "Pommier d’Alaska",
+          "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier",
+          "siteUrl": "https://kalildorleans.neocities.org/pommier-alaska",
+          "credits": "Instru : ARAM. Enregistrement et mix : Kalil d’Orléans.",
+          "sourceIds": [
+            "artist-site",
+            "artist-credits"
+          ],
+          "year": 2026,
+          "contributorProfiles": [
+            {
+              "name": "ARAM",
+              "role": "Instrumental",
+              "url": "https://www.instagram.com/prodaram/"
+            }
+          ],
+          "listeningLinks": [
+            {
+              "platform": "YouTube",
+              "url": "https://www.youtube.com/watch?v=OnxQtO7Ki1U"
+            },
+            {
+              "platform": "SoundCloud",
+              "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-pommier"
+            }
+          ]
+        },
+        {
+          "title": "Pulp Fiction",
+          "type": "chanson",
+          "url": "https://soundcloud.com/kalildorleans/pulpfiction",
+          "siteUrl": null,
+          "year": 2026,
+          "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+          "platformPublication": {
+            "platform": "SoundCloud",
+            "date": "2026-09-20"
+          },
+          "duration": "PT1M24S",
+          "explicit": true,
+          "platformGenre": "Hip-hop & Rap",
+          "credits": "Instrumental : Cold Melody. Enregistrement et mix : Kalil d’Orléans.",
+          "contributorProfiles": [
+            {
+              "name": "Cold Melody",
+              "role": "Instrumental",
+              "url": "https://www.instagram.com/coldm_beatz/"
+            }
+          ],
+          "sourceIds": [
+            "soundcloud-pulpfiction"
+          ],
+          "provenance": "Informations affichées publiquement par l’artiste sur la page SoundCloud du morceau ; aucune analyse audio automatique."
+        },
+        {
+          "title": "J’me barre",
+          "type": "chanson",
+          "url": "https://soundcloud.com/kalildorleans/kalil-dorle-ans-jme-barre",
+          "siteUrl": null,
+          "year": 2026,
+          "yearScope": "Année de publication sur SoundCloud ; première date de sortie non vérifiée.",
+          "platformPublication": {
+            "platform": "SoundCloud",
+            "date": "2026-07-16"
+          },
+          "duration": "PT2M41S",
+          "explicit": null,
+          "credits": null,
+          "sourceIds": [
+            "soundcloud-jmebarre"
+          ],
+          "provenance": "Titre, artiste, durée et date affichés sur SoundCloud. Crédits détaillés non renseignés sur la page consultée."
+        }
+      ]
+    },
+    "selection_artiste": {
+      "context": "Trois morceaux choisis par l’artiste pour présenter son univers, en complément de Pommier d’Alaska.",
+      "recordings": [
+        {
+          "title": "Métis 2.0",
+          "url": "https://www.youtube.com/watch?v=-3fVTkgOYCY",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau--3fVTkgOYCY",
+          "credits": "Crédits — Métis 2.0 Paroles : Kalil Mnasri Musique : Max Ruest Vidéo : Jean-Gabriel Morin Motion design : KJT",
+          "sourceIds": [
+            "artist-site",
+            "artist-credits"
+          ],
+          "year": 2020
+        },
+        {
+          "title": "L’avenue des dérangés",
+          "url": "https://www.youtube.com/watch?v=hxeC1tr2ru4",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-hxeC1tr2ru4",
+          "credits": "Crédits — L’avenue des dérangés Instrumental : Street Scientist Beat Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+          "sourceIds": [
+            "artist-site",
+            "artist-credits"
+          ]
+        },
+        {
+          "title": "L’apéritif",
+          "url": "https://www.youtube.com/watch?v=L1LzwDFBq1g",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-L1LzwDFBq1g",
+          "credits": "Crédits — L’apéritif Album : Évolution · 2011 Beat : Dave Psycadelick Huot Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+          "sourceIds": [
+            "artist-site",
+            "artist-credits"
+          ],
+          "year": 2011
+        }
+      ]
+    },
+    "archives": {
+      "label": "Clips et chansons des archives",
+      "siteUrl": "https://kalildorleans.neocities.org/musique",
+      "recordings": [
+        {
+          "title": "Le chat et la souris · Magic Color Band",
+          "type": "clip",
+          "url": "https://www.youtube.com/watch?v=S_XxaIPGvtU",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-S_XxaIPGvtU",
+          "year": 2014,
+          "credits": "Crédits — Le chat et la souris Magic Color Band feat. Kalil Mnasri · 2014 Musique : Patrice Martineau Vidéo : Cris Clay",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "Métis 2.0",
+          "type": "clip",
+          "url": "https://www.youtube.com/watch?v=-3fVTkgOYCY",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau--3fVTkgOYCY",
+          "year": 2020,
+          "credits": "Crédits — Métis 2.0 Paroles : Kalil Mnasri Musique : Max Ruest Vidéo : Jean-Gabriel Morin Motion design : KJT",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "Québec d’aujourd’hui · Jul-High",
+          "type": "clip",
+          "url": "https://www.youtube.com/watch?v=l__xJh3Q3wc",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-l__xJh3Q3wc",
+          "year": 2011,
+          "credits": "Crédits — Québec d’aujourd’hui — live Interprétation : Kalil Mnasri et Jul-High Live à La Ninkasi · 2011 Vidéo publiée par Jul-High",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "Tous pour 1 mic",
+          "type": "clip",
+          "url": "https://www.youtube.com/watch?v=IXT5ZryJy9o",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-IXT5ZryJy9o",
+          "year": 2008,
+          "credits": "Crédits — Tous pour 1 mic Sach feat. Tp1 (Kalil Mnasri, Ugo, Fléau Le Ouf et Proulx) Extrait du mixtape de Psycadelick (2006) Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions Beat : Street Scientist Beat (Sach)",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année de publication de la vidéo, distincte de l’année du mixtape.",
+          "mixtapeYear": 2006,
+          "mixtapeYearProvenance": "Année fournie par l’artiste."
+        },
+        {
+          "title": "Reviens-moi · La Carotte Polaire",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=KBQ3pQAgHak",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-KBQ3pQAgHak",
+          "year": 2017,
+          "credits": "Crédits — Reviens-moi Interprétation : La Carotte Polaire avec Kalil Mnasri",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "Prophète du malheur",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=iCHuDUD88Nk",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-iCHuDUD88Nk",
+          "year": 2015,
+          "credits": "Crédits — Prophète du malheur Composition et interprétation : Kalil Mnasri Studio : Essentiel Productions",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "2015 retenu explicitement par l’artiste pour le site ; ne doit pas être remplacé par la date de publication YouTube (2014)."
+        },
+        {
+          "title": "Métis",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=XHPv52KUy20",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-XHPv52KUy20",
+          "year": 2014,
+          "credits": "Crédits — Métis Interprétation : Kalil Mnasri Instrumental : Patrice Martineau Enregistrement : Patrice Martineau",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "Histoires · Feuilles et Racines",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=tbXD7FJuSYY",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-tbXD7FJuSYY",
+          "year": 2011,
+          "credits": "Crédits — Histoires Avec Feuilles et Racines Album : Évolution · 2011 Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Prod.",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "album": "Évolution",
+          "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+        },
+        {
+          "title": "R(évolution)",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=qjMUkAKThsg",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-qjMUkAKThsg",
+          "year": 2011,
+          "credits": "Crédits — R(évolution) Album : Évolution · 2011 Beat : Sacha Boulet Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Prod.",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "album": "Évolution",
+          "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+        },
+        {
+          "title": "On rêve · Jul-High",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=kcNkXbHPa-g",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-kcNkXbHPa-g",
+          "year": 2011,
+          "credits": "Crédits — On rêve Interprétation : Jul-High avec Kalil Mnasri Studio : Essentiel Productions",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        },
+        {
+          "title": "L’avenue des dérangés",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=hxeC1tr2ru4",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-hxeC1tr2ru4",
+          "year": null,
+          "credits": "Crédits — L’avenue des dérangés Instrumental : Street Scientist Beat Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année de sortie non confirmée ; le site affiche « Essentiel », qui n’est pas une date."
+        },
+        {
+          "title": "L’apéritif",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=L1LzwDFBq1g",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-L1LzwDFBq1g",
+          "year": 2011,
+          "credits": "Crédits — L’apéritif Album : Évolution · 2011 Beat : Dave Psycadelick Huot Enregistrement et mix : Dave Psycadelick Huot Studio : Essentiel Productions",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "album": "Évolution",
+          "yearScope": "Année de l’album Évolution (13 décembre 2011) ; date de publication de chaque vidéo distincte."
+        },
+        {
+          "title": "Regarde le monde",
+          "type": "chanson",
+          "url": "https://www.youtube.com/watch?v=4a4kuwoJ4yE",
+          "siteUrl": "https://kalildorleans.neocities.org/#morceau-4a4kuwoJ4yE",
+          "year": 2008,
+          "credits": "Crédits — Regarde le monde Interprétation : Kalil Mnasri, Psycadélick et Sach Studio : Essentiel Productions",
+          "provenance": "Informations et crédits fournis par l’artiste pour son site officiel.",
+          "yearScope": "Année affichée sur le site officiel pour ce clip ou ce morceau."
+        }
+      ]
+    }
   }
 }
