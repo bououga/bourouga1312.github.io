@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Grande Ligne — 1700</title>
+<meta name="description" content="Jeu de stratégie : campagne au tour par tour sur l'Europe de 1700 et batailles rangées en temps réel.">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<!-- ------------------------------------------------ menu principal -->
+<section id="menu" class="ecran actif">
+  <div class="menu-fond"></div>
+  <div class="menu-contenu">
+    <header class="menu-titre">
+      <h1>Grande Ligne</h1>
+      <p class="sous-titre">Europe, printemps 1700</p>
+    </header>
+
+    <p class="menu-intro">
+      Charles II d'Espagne se meurt sans héritier. Dans le Nord, Charles XII vient d'entrer en guerre.
+      Choisissez une couronne, tenez vos finances, et gagnez vos batailles vous-même.
+    </p>
+
+    <div id="choixNations" class="grille-nations"></div>
+
+    <div class="bloc-nation" id="ficheNation">
+      <h2 id="ficheNom">—</h2>
+      <p id="ficheTexte"></p>
+      <ul id="ficheBonus" class="liste-bonus"></ul>
+    </div>
+
+    <div class="menu-actions">
+      <button id="btnCommencer" class="bouton principal" disabled>Commencer la campagne</button>
+      <button id="btnCharger" class="bouton">Reprendre la partie sauvegardée</button>
+      <button id="btnEscarmouche" class="bouton">Bataille rapide</button>
+    </div>
+    <p class="menu-aide">Molette : zoom · clic gauche : sélection · clic droit : ordre</p>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ campagne -->
+<section id="campagne" class="ecran">
+  <canvas id="carte"></canvas>
+
+  <div id="barreHaut" class="barre">
+    <div class="bloc-nation-hud">
+      <span id="hudDrapeau" class="drapeau"></span>
+      <div>
+        <div id="hudNation" class="hud-nation">—</div>
+        <div id="hudDate" class="hud-date">—</div>
+      </div>
+    </div>
+    <div class="hud-stats">
+      <div class="stat" title="Trésor"><span class="label">Trésor</span><span id="hudTresor" class="valeur">0</span></div>
+      <div class="stat" title="Solde par saison"><span class="label">Solde</span><span id="hudSolde" class="valeur">0</span></div>
+      <div class="stat" title="Provinces"><span class="label">Provinces</span><span id="hudProvinces" class="valeur">0</span></div>
+      <div class="stat" title="Régiments"><span class="label">Régiments</span><span id="hudRegiments" class="valeur">0</span></div>
+    </div>
+    <div class="hud-boutons">
+      <button class="bouton petit" id="btnImpots">Impôts</button>
+      <button class="bouton petit" id="btnRecherche">Recherche</button>
+      <button class="bouton petit" id="btnDiplomatie">Diplomatie</button>
+      <button class="bouton petit" id="btnJournal">Journal</button>
+      <button class="bouton petit" id="btnSauver">Sauver</button>
+      <button class="bouton petit danger" id="btnQuitter">Menu</button>
+    </div>
+  </div>
+
+  <aside id="panneau" class="panneau">
+    <div id="panneauContenu"><p class="vide">Cliquez sur une province ou une armée.</p></div>
+  </aside>
+
+  <div id="barreBas" class="barre bas">
+    <div id="alerte" class="alerte"></div>
+    <button id="btnFinTour" class="bouton principal grand">Fin du tour</button>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ bataille -->
+<section id="bataille" class="ecran">
+  <canvas id="champ"></canvas>
+
+  <div id="hudBatailleHaut" class="barre bataille-haut">
+    <div class="bataille-camp" id="campGauche">—</div>
+    <div class="bataille-centre">
+      <div id="chronoBataille" class="chrono">0:00</div>
+      <div class="controles-temps">
+        <button class="bouton petit" data-vitesse="0" id="btnPause">‖</button>
+        <button class="bouton petit actif" data-vitesse="1">1×</button>
+        <button class="bouton petit" data-vitesse="2">2×</button>
+        <button class="bouton petit" data-vitesse="4">4×</button>
+        <button class="bouton petit" data-vitesse="8">8×</button>
+      </div>
+    </div>
+    <div class="bataille-camp droite" id="campDroite">—</div>
+    <button class="bouton petit" id="btnAide" title="Commandes">?</button>
+  </div>
+
+  <div id="barreDeploiement" class="barre deploiement">
+    <span>Placez vos régiments dans la zone bleue, puis engagez.</span>
+    <button class="bouton petit" id="btnAutoDeploiement">Disposition automatique</button>
+    <button class="bouton principal" id="btnEngager">Engager la bataille</button>
+    <button class="bouton petit danger" id="btnRefuser">Se retirer</button>
+  </div>
+
+  <div id="hudBatailleBas" class="hud-bas">
+    <div id="cartesUnites" class="cartes-unites"></div>
+    <div class="ordres">
+      <div class="groupe-ordres">
+        <button class="bouton petit" data-ordre="ligne" title="Ligne (L)">Ligne</button>
+        <button class="bouton petit" data-ordre="colonne" title="Colonne (C)">Colonne</button>
+        <button class="bouton petit" data-ordre="carre" title="Carré (Y)">Carré</button>
+        <button class="bouton petit" data-ordre="tirailleur" title="Tirailleurs (T)">Tirailleurs</button>
+      </div>
+      <div class="groupe-ordres">
+        <button class="bouton petit" data-ordre="feu" title="Feu à volonté (F)">Feu</button>
+        <button class="bouton petit" data-ordre="halte" title="Halte (H)">Halte</button>
+        <button class="bouton petit" data-ordre="portees" title="Afficher les portées (P)">Portées</button>
+        <button class="bouton petit danger" data-ordre="retraite">Sonner la retraite</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="messagesBataille" class="messages"></div>
+</section>
+
+<!-- ------------------------------------------------ fenêtres -->
+<div id="modale" class="modale">
+  <div class="modale-boite">
+    <header><h2 id="modaleTitre">—</h2><button id="modaleFermer" class="bouton petit">Fermer</button></header>
+    <div id="modaleContenu"></div>
+  </div>
+</div>
+
+<div id="resultat" class="modale">
+  <div class="modale-boite etroite">
+    <header><h2 id="resultatTitre">—</h2></header>
+    <div id="resultatContenu"></div>
+    <div class="modale-actions"><button id="resultatOk" class="bouton principal">Continuer</button></div>
+  </div>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/data_world.js"></script>
+<script src="js/data_army.js"></script>
+<script src="js/campaign.js"></script>
+<script src="js/campaign_ia.js"></script>
+<script src="js/campaign_vue.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/battle_ia.js"></script>
+<script src="js/battle_vue.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
