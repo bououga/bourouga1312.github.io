@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ferre — Biographie</title>
+  <meta name="description" content="Ferre, artiste. Biographie, discographie et clips, dont « Prophète du malheur » avec Rosalux.">
+  <meta property="og:title" content="Ferre — Biographie">
+  <meta property="og:description" content="Biographie, discographie et clips de Ferre.">
+  <meta property="og:type" content="profile">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #202122;
+      --muted: #54595d;
+      --link: #3366cc;
+      --link-visited: #795cb2;
+      --border: #a2a9b1;
+      --border-light: #eaecf0;
+      --box: #f8f9fa;
+      --infobox-head: #d9d2e9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #101418;
+        --text: #eaecf0;
+        --muted: #a2a9b1;
+        --link: #88a3e8;
+        --link-visited: #a799cd;
+        --border: #54595d;
+        --border-light: #303438;
+        --box: #1a1e22;
+        --infobox-head: #3a3150;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:visited { color: var(--link-visited); }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      border-bottom: 1px solid var(--border-light);
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    .topbar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .topbar .site { color: var(--text); font-weight: 600; }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px 16px 48px;
+    }
+
+    h1, h2 {
+      font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
+      font-weight: normal;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 8px 0 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tagline { color: var(--muted); font-size: 0.875em; margin: 6px 0 16px; }
+    h2 {
+      font-size: 1.5em;
+      margin: 1.4em 0 0.5em;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    h3 { font-size: 1.1em; margin: 1.2em 0 0.3em; }
+    p { margin: 0.5em 0 0.9em; }
+
+    /* Infobox */
+    .infobox {
+      float: right;
+      width: 300px;
+      margin: 0 0 16px 20px;
+      border: 1px solid var(--border);
+      background: var(--box);
+      font-size: 0.875em;
+      line-height: 1.5;
+      border-collapse: collapse;
+    }
+    .infobox caption {
+      font-weight: bold;
+      font-size: 1.15em;
+      padding: 8px 4px 4px;
+      background: var(--box);
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+    .infobox .media {
+      text-align: center;
+      padding: 8px;
+    }
+    .infobox .media iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      display: block;
+    }
+    .infobox .media small { color: var(--muted); display: block; margin-top: 4px; }
+    .infobox .section th {
+      background: var(--infobox-head);
+      text-align: center;
+      padding: 4px;
+    }
+    .infobox th, .infobox td {
+      padding: 4px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+    .infobox tr + tr th[scope="row"], .infobox tr + tr td { border-top: 1px solid var(--border-light); }
+    .infobox th[scope="row"] { width: 38%; }
+
+    /* Sommaire */
+    .toc {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: var(--box);
+      padding: 8px 16px 8px 12px;
+      font-size: 0.9em;
+      margin: 8px 0 8px;
+    }
+    .toc-title { font-weight: bold; text-align: center; margin-bottom: 4px; }
+    .toc ol { margin: 0; padding-left: 1.6em; }
+    .toc li { margin: 2px 0; }
+
+    /* Tableaux */
+    .wikitable {
+      border-collapse: collapse;
+      background: var(--box);
+      border: 1px solid var(--border);
+      margin: 0.5em 0 1em;
+      font-size: 0.95em;
+    }
+    .wikitable th, .wikitable td {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      text-align: left;
+    }
+    .wikitable th { background: var(--border-light); }
+
+    .refs { font-size: 0.9em; }
+    .refs li { margin: 4px 0; }
+    sup.ref { font-size: 0.75em; line-height: 0; }
+
+    .lastmod {
+      clear: both;
+      margin-top: 40px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+      color: var(--muted);
+      font-size: 0.8em;
+    }
+
+    @media (max-width: 720px) {
+      h1 { font-size: 1.7em; }
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 16px;
+      }
+      .toc { display: block; }
+      .table-wrap { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="site" href="index.html">bourouga1312</a>
+      <a href="index.html">Voir le clip</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>Ferre</h1>
+    <p class="tagline">Artiste</p>
+
+    <table class="infobox">
+      <caption>Ferre</caption>
+      <tbody>
+        <tr>
+          <td class="media" colspan="2">
+            <iframe src="https://www.youtube-nocookie.com/embed/3EdAq0vLoNI?rel=0"
+                    title="Ferre × Rosalux – Prophète du malheur (clip officiel)"
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            <small><i>Prophète du malheur</i>, clip officiel</small>
+          </td>
+        </tr>
+        <tr class="section"><th colspan="2">Informations générales</th></tr>
+        <tr><th scope="row">Nom de scène</th><td>Ferre</td></tr>
+        <!-- À compléter : <tr><th scope="row">Nom de naissance</th><td>…</td></tr> -->
+        <!-- À compléter : <tr><th scope="row">Naissance</th><td>…</td></tr> -->
+        <!-- À compléter : <tr><th scope="row">Origine</th><td>…</td></tr> -->
+        <tr><th scope="row">Activité</th><td>Musique</td></tr>
+        <!-- À compléter : <tr><th scope="row">Genre musical</th><td>…</td></tr> -->
+        <tr><th scope="row">Langue</th><td>Français</td></tr>
+        <tr><th scope="row">Collaborations</th><td>Rosalux</td></tr>
+        <tr class="section"><th colspan="2">En ligne</th></tr>
+        <tr>
+          <th scope="row">Réseaux</th>
+          <td>
+            <a href="https://www.instagram.com/bourouga1312/" target="_blank" rel="noopener">Instagram</a><br>
+            <a href="https://www.facebook.com/profile.php?id=61575021334920" target="_blank" rel="noopener">Facebook</a><br>
+            <a href="https://www.youtube.com/watch?v=3EdAq0vLoNI" target="_blank" rel="noopener">YouTube</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <b>Ferre</b> est artiste et interprète de musique francophone. On lui doit notamment
+      <i>Prophète du malheur</i>, un titre enregistré avec <b>Rosalux</b> et sorti
+      en 2025 avec un clip officiel<sup class="ref"><a href="#ref-1">[1]</a></sup>.
+    </p>
+    <!-- À compléter : une ou deux phrases sur ce qui le caractérise (style, ville, thèmes). -->
+
+    <nav class="toc" aria-label="Sommaire">
+      <div class="toc-title">Sommaire</div>
+      <ol>
+        <li><a href="#biographie">Biographie</a></li>
+        <li><a href="#prophete-du-malheur">« Prophète du malheur »</a></li>
+        <li><a href="#discographie">Discographie</a></li>
+        <li><a href="#references">Références</a></li>
+        <li><a href="#liens-externes">Liens externes</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="biographie">Biographie</h2>
+    <!-- À compléter : enfance, débuts dans la musique, premiers morceaux, rencontres. -->
+    <p>
+      Ferre diffuse sa musique principalement sur YouTube et sur les réseaux sociaux,
+      Instagram et Facebook.
+    </p>
+
+    <h2 id="prophete-du-malheur">« Prophète du malheur »</h2>
+    <p>
+      En 2025, Ferre sort <i>Prophète du malheur</i> en duo avec Rosalux. Le morceau est
+      accompagné d'un clip publié sur YouTube<sup class="ref"><a href="#ref-1">[1]</a></sup>.
+      Le titre reprend l'expression « prophète de malheur », qui désigne en français
+      celui qui annonce sans cesse des catastrophes<sup class="ref"><a href="#ref-2">[2]</a></sup>.
+    </p>
+    <!-- À compléter : thème du morceau, tournage du clip, réalisateur, réception. -->
+
+    <h2 id="discographie">Discographie</h2>
+    <h3>Singles</h3>
+    <div class="table-wrap">
+      <table class="wikitable">
+        <thead>
+          <tr><th>Année</th><th>Titre</th><th>Artistes</th><th>Clip</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025</td>
+            <td><i>Prophète du malheur</i></td>
+            <td>Ferre feat. Rosalux</td>
+            <td><a href="https://www.youtube.com/watch?v=3EdAq0vLoNI" target="_blank" rel="noopener">YouTube</a></td>
+          </tr>
+          <!-- À compléter : une ligne <tr> par titre. -->
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="references">Références</h2>
+    <ol class="refs">
+      <li id="ref-1">
+        « Ferre × Rosalux – Prophète du malheur (clip officiel) »,
+        <a href="https://www.youtube.com/watch?v=3EdAq0vLoNI" target="_blank" rel="noopener">YouTube</a>.
+      </li>
+      <li id="ref-2">
+        « Prophète de malheur », <a href="https://www.lalanguefrancaise.com/dictionnaire/definition/prophete-de-malheur" target="_blank" rel="noopener">La langue française</a>.
+      </li>
+    </ol>
+
+    <h2 id="liens-externes">Liens externes</h2>
+    <ul>
+      <li><a href="https://www.instagram.com/bourouga1312/" target="_blank" rel="noopener">Ferre sur Instagram</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61575021334920" target="_blank" rel="noopener">Ferre sur Facebook</a></li>
+      <li><a href="https://www.youtube.com/watch?v=3EdAq0vLoNI" target="_blank" rel="noopener"><i>Prophète du malheur</i> sur YouTube</a></li>
+    </ul>
+
+    <p class="lastmod">Dernière modification de cette page le 2 octobre 2026.</p>
+  </main>
+
+</body>
+</html>
